@@ -1,6 +1,6 @@
 ## Bienvenue
 
-L'école EJCP a pour objectif de rassembler les jeunes chercheur·se·s dans les thématiques logicielles, en première ou deuxième année de thèse, pendant une semaine à deux semaines. C'est l'occasion de découvrir un ensemble de thèmes de recherche de la communauté du logiciel, domaine vaste jamais abordé dans un unique master. Les intervenant·e·s réalisent des cours et des travaux pratiques variés et de grande qualité.
+L'école a pour objectif de rassembler les jeunes chercheur·se·s dans les thématiques logicielles, en première ou deuxième année de thèse, pendant une semaine à deux semaines. C'est l'occasion de découvrir un ensemble de thèmes de recherche de la communauté du logiciel, domaine vaste jamais abordé dans un unique master. Les intervenant·e·s réalisent des cours et des travaux pratiques variés et de grande qualité.
 
 ### Organisation
 
