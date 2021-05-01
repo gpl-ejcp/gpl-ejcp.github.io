@@ -9,5 +9,4 @@ permalink: /contact
 
 
 
-Pour plus d'information concernant l'EJPC, vous pouvez écrire à
- [laure.gonnord@ens-lyon.fr](mailto:laure.gonnord@ens-lyon.fr).
+Pour plus d'information concernant l'EJCP, vous pouvez contacter sa directrice scientifique:  [laure.gonnord@ens-lyon.fr](mailto:laure.gonnord@ens-lyon.fr).
