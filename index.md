@@ -5,7 +5,7 @@ date: 2021-04-28 19:30:00 -0500
 permalink: /
 ---
 
-| [Main](./index) | [EJCP2021](./ejcp2021) | [About](./about) | [Contact](./contact) |
+| [Main](./index) | [EJCP2022](./ejcp2022) |[EJCP2021](./ejcp2021) | [About](./about) | [Contact](./contact) |
 
 
 ## Bienvenue
@@ -19,7 +19,7 @@ L'école est organisée chaque année par une équipe/ville différente. Les int
 
 ### Dernières éditions
 
-* 2021 : édition "mode dégradé" en distanciel, pendant les journées du GDR (Semaine du 14 juin 2021). 
+* 2021 : édition "mode dégradé" en distanciel, pendant les journées du GDR (Semaine du 14 juin 2021). [](./ejcp22)
 * 2020 : édition annulée (Nantes)
 * 2019 à [Strasbourg](http://ejcp2019.icube.unistra.fr/)
 * 2018 à [Lyon](https://ejcp2018.sciencesconf.org/)
