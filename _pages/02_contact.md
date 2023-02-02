@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Index page"
-date: 2022-05-10
+date: 2022-02-02
 permalink: /contact
 ---
 
