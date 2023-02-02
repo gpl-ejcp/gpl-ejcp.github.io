@@ -14,7 +14,7 @@ L'école a pour objectif de rassembler les jeunes chercheur·se·s dans les thé
 
 ### Organisation
 
-L'école est organisée chaque année par une équipe/ville différente. Les intervenant·e·s sont choisi·e·s dans la communauté francophone, en collaboration entre l'équipe locale et la direction de l'EJCP.
+L'école est organisée chaque année par une équipe/ville différente. Les intervenant·e·s sont choisi·e·s dans la communauté francophone [GPL](https://gdr-gpl.cnrs.fr/), en collaboration entre l'équipe locale et la direction de l'EJCP.
 
 
 ### Dernières éditions
