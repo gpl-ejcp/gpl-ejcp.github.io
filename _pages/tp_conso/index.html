@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+                <title>TP Mesures de Consommation</title>
+            <script
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+            type="text/javascript"></script>
+        <!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+	<![endif]-->
+	 	 <style>
+  /*!normalize.css v3.0.2 | MIT License | git.io/normalize*/html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:initial}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}.container{position:relative;width:100%;max-width:960px;margin:0 auto;padding:0 20px;box-sizing:border-box}.column,.columns{width:100%;float:left;box-sizing:border-box}@media(min-width:400px){.container{width:85%;padding:0}}@media(min-width:550px){.container{width:80%}.column,.columns{margin-left:4%}.column:first-child,.columns:first-child{margin-left:0}.one.column,.one.columns{width:4.66666666667%}.two.columns{width:13.3333333333%}.three.columns{width:22%}.four.columns{width:30.6666666667%}.five.columns{width:39.3333333333%}.six.columns{width:48%}.seven.columns{width:56.6666666667%}.eight.columns{width:65.3333333333%}.nine.columns{width:74%}.ten.columns{width:82.6666666667%}.eleven.columns{width:91.3333333333%}.twelve.columns{width:100%;margin-left:0}.one-third.column{width:30.6666666667%}.two-thirds.column{width:65.3333333333%}.one-half.column{width:48%}.offset-by-one.column,.offset-by-one.columns{margin-left:8.66666666667%}.offset-by-two.column,.offset-by-two.columns{margin-left:17.3333333333%}.offset-by-three.column,.offset-by-three.columns{margin-left:26%}.offset-by-four.column,.offset-by-four.columns{margin-left:34.6666666667%}.offset-by-five.column,.offset-by-five.columns{margin-left:43.3333333333%}.offset-by-six.column,.offset-by-six.columns{margin-left:52%}.offset-by-seven.column,.offset-by-seven.columns{margin-left:60.6666666667%}.offset-by-eight.column,.offset-by-eight.columns{margin-left:69.3333333333%}.offset-by-nine.column,.offset-by-nine.columns{margin-left:78%}.offset-by-ten.column,.offset-by-ten.columns{margin-left:86.6666666667%}.offset-by-eleven.column,.offset-by-eleven.columns{margin-left:95.3333333333%}.offset-by-one-third.column,.offset-by-one-third.columns{margin-left:34.6666666667%}.offset-by-two-thirds.column,.offset-by-two-thirds.columns{margin-left:69.3333333333%}.offset-by-one-half.column,.offset-by-one-half.columns{margin-left:52%}}html{font-size:62.5%}body{font-size:1.5em;line-height:1.6;font-weight:400;font-family:raleway,helveticaneue,helvetica neue,Helvetica,Arial,sans-serif;color:#222}h1,h2,h3,h4,h5,h6{margin-bottom:2rem;font-weight:300}h1{font-size:4rem;line-height:1.2;letter-spacing:-.1rem}h2{font-size:3.6rem;line-height:1.25;letter-spacing:-.1rem}h3{font-size:3rem;line-height:1.3;letter-spacing:-.1rem}h4{font-size:2.4rem;line-height:1.35;letter-spacing:-.08rem}h5{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem}h6{font-size:1.5rem;line-height:1.6;letter-spacing:0}@media(min-width:550px){h1{font-size:5rem}h2{font-size:4.2rem}h3{font-size:3.6rem}h4{font-size:3rem}h5{font-size:2.4rem}h6{font-size:1.5rem}}p{margin-top:0}a{color:#b77e13;text-decoration:none}a:hover{text-decoration:underline}.button,button,input[type=submit],input[type=reset],input[type=button]{display:inline-block;height:38px;padding:0 30px;color:#bbb;text-align:center;font-size:11px;font-weight:600;line-height:38px;letter-spacing:.1rem;text-transform:uppercase;text-decoration:none;white-space:nowrap;background-color:initial;border-radius:4px;border:1px solid #bbb;cursor:pointer;box-sizing:border-box}.button:hover,button:hover,input[type=submit]:hover,input[type=reset]:hover,input[type=button]:hover,.button:focus,button:focus,input[type=submit]:focus,input[type=reset]:focus,input[type=button]:focus{color:#eee;border-color:#eee;outline:0}.button.button-primary,button.button-primary,input[type=submit].button-primary,input[type=reset].button-primary,input[type=button].button-primary{color:#fff;background-color:#33c3f0;border-color:#33c3f0}.button.button-primary:hover,button.button-primary:hover,input[type=submit].button-primary:hover,input[type=reset].button-primary:hover,input[type=button].button-primary:hover,.button.button-primary:focus,button.button-primary:focus,input[type=submit].button-primary:focus,input[type=reset].button-primary:focus,input[type=button].button-primary:focus{color:#fff;background-color:#1eaedb;border-color:#1eaedb}input[type=email],input[type=number],input[type=search],input[type=text],input[type=tel],input[type=url],input[type=password],textarea,select{height:38px;padding:6px 10px;background-color:#555;color:#eee;border:1px solid #d1d1d1;border-radius:4px;box-shadow:none;box-sizing:border-box}input[type=email],input[type=number],input[type=search],input[type=text],input[type=tel],input[type=url],input[type=password],textarea{-webkit-appearance:none;-moz-appearance:none;appearance:none}textarea{min-height:65px;padding-top:6px;padding-bottom:6px}input[type=email]:focus,input[type=number]:focus,input[type=search]:focus,input[type=text]:focus,input[type=tel]:focus,input[type=url]:focus,input[type=password]:focus,textarea:focus,select:focus{border:1px solid #33c3f0;outline:0}label,legend{display:block;margin-bottom:.5rem;font-weight:600}fieldset{padding:0;border-width:0}input[type=checkbox],input[type=radio]{display:inline}label>.label-body{display:inline-block;margin-left:.5rem;font-weight:400}ul{list-style:disc outside}ol{list-style:decimal outside}ol,ul{padding-left:2rem}ul ul,ul ol,ol ol,ol ul{margin:1.5rem 0 1.5rem 3rem;font-size:90%}li{margin-bottom:.5rem}code{padding:.2rem .5rem;margin:0 .2rem;font-size:90%;white-space:nowrap;background:#f1f1f1;border:1px solid #e1e1e1;border-radius:4px}pre>code{display:block;padding:1rem 1.5rem;white-space:pre}th,td{padding:12px 15px;text-align:left;border-bottom:1px solid #e1e1e1}tr.header{background-color:#cdcdcd}tr.even{background-color:#ddd}tr.odd{background-color:#eee}table{width:100%}button,.button{margin-bottom:1rem}input,textarea,select,fieldset{margin-bottom:1.5rem}pre,blockquote,dl,figure,table,p,ul,ol,form{margin-bottom:2.5rem}.u-full-width{width:100%;box-sizing:border-box}.u-max-full-width{max-width:100%;box-sizing:border-box}.u-pull-right{float:right}.u-pull-left{float:left}hr{margin-top:3rem;margin-bottom:3.5rem;border-width:0;border-top:1px solid #e1e1e1}.container:after,.row:after,.u-cf{content:"";display:table;clear:both}@media(min-width:400px){}@media(min-width:550px){}@media(min-width:750px){}@media(min-width:1000px){}@media(min-width:1200px){}@font-face{font-family:lato;font-style:italic;font-weight:400;font-display:swap;src:local('Lato Italic'),local('Lato-Italic'),url(fonts/S6u8w4BMUTPHjxswWw.ttf)format('truetype')}@font-face{font-family:lato;font-style:italic;font-weight:700;font-display:swap;src:local('Lato Bold Italic'),local('Lato-BoldItalic'),url(fonts/S6u_w4BMUTPHjxsI5wqPHA.ttf)format('truetype')}@font-face{font-family:lato;font-style:normal;font-weight:400;font-display:swap;src:local('Lato Regular'),local('Lato-Regular'),url(fonts/S6uyw4BMUTPHvxk.ttf)format('truetype')}@font-face{font-family:lato;font-style:normal;font-weight:700;font-display:swap;src:local('Lato Bold'),local('Lato-Bold'),url(fonts/S6u9w4BMUTPHh6UVew8.ttf)format('truetype')}body{font-family:lato,Verdana,Arial,Sans-Serif;background-color:#efefef;color:#444}.header{padding-top:6rem;padding-bottom:6rem;margin-bottom:3rem;width:100%;text-align:center;background-color:#fff;color:#80b84b}tr.header{text-align:center;background-color:#ccc;color:#444}.footer{width:100%;background-color:#ccc}table .telechargement{text-align:right}h2,h3{font-weight:700}h2,h3{margin-top:6rem}select{color:#fff}#connexionBox{padding:10px;float:right;background-color:#555}.thematique,.etudiants{padding:10px;margin-bottom:20px;border:1px solid #aaa;border-radius:4px}.thematique,.etudiants ul{padding:0;margin:0}.success{background-color:#80b84b;float:left;border-radius:4px;padding:10px}.success h2{margin-top:10px;margin-bottom:10px}.success p{margin:5px 0}ul.errors{background-color:#ae0108;border-radius:4px;padding:10px}ul.errors li{list-style:none;margin-top:1rem;margin-bottom:1rem}textarea.answers{width:100%}pre.answers{font-family:lato,Verdana,Arial,Sans-Serif;border:1px solid #bbb;border-radius:4px;background-color:#555;color:#eee;padding:10px}nav{display:none}@media(min-width:1500px){nav{display:block;position:absolute;top:40%;left:20px;border-right:3px solid #444;padding-right:30px;max-width:15%}nav ul{margin:0;text-align:left}}nav .title{display:block;font-weight:700;font-size:2rem;line-height:5rem}div.note{padding:20px;background-color:rgba(90,147,196,.2);border-left:5px solid rgba(90,147,196,.8);margin:1.5rem 0}div.note p:last-child,div.note ul:last-child{margin-bottom:0}div.note.danger{background-color:#f2dede;border-left:5px solid #a94442}pre.console{background-color:rgba(128,128,128,.2);border-left:5px solid rgba(128,128,128,.8)}pre code.sourceCode.java{background-color:rgba(90,147,196,.2);border-left:5px solid rgba(90,147,196,.8)}code.sourceCode.python{background-color:rgb(134,186,71,.2)}pre code.sourceCode.python{border-left:5px solid rgb(134,186,71,.8)}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:initial;border:0}.markdown-body .commit-tease-sha{display:inline-block;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:90%;color:#444d56}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body .blob-wrapper{overflow-x:auto;overflow-y:hidden}.markdown-body .blob-wrapper-embedded{max-height:240px;overflow-y:auto}.markdown-body .blob-num{width:1%;min-width:50px;padding-right:10px;padding-left:10px;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;line-height:20px;color:rgba(27,31,35,.3);text-align:right;white-space:nowrap;vertical-align:top;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-body .blob-num:hover{color:rgba(27,31,35,.6)}.markdown-body .blob-num:before{content:attr(data-line-number)}.markdown-body .blob-code{position:relative;padding-right:10px;padding-left:10px;line-height:20px;vertical-align:top}.markdown-body .blob-code-inner{overflow:visible;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;color:#24292e;word-wrap:normal;white-space:pre}.markdown-body .pl-token.active,.markdown-body .pl-token:hover{cursor:pointer;background:#ffea7f}.markdown-body .tab-size[data-tab-size="1"]{-moz-tab-size:1;tab-size:1}.markdown-body .tab-size[data-tab-size="2"]{-moz-tab-size:2;tab-size:2}.markdown-body .tab-size[data-tab-size="3"]{-moz-tab-size:3;tab-size:3}.markdown-body .tab-size[data-tab-size="4"]{-moz-tab-size:4;tab-size:4}.markdown-body .tab-size[data-tab-size="5"]{-moz-tab-size:5;tab-size:5}.markdown-body .tab-size[data-tab-size="6"]{-moz-tab-size:6;tab-size:6}.markdown-body .tab-size[data-tab-size="7"]{-moz-tab-size:7;tab-size:7}.markdown-body .tab-size[data-tab-size="8"]{-moz-tab-size:8;tab-size:8}.markdown-body .tab-size[data-tab-size="9"]{-moz-tab-size:9;tab-size:9}.markdown-body .tab-size[data-tab-size="10"]{-moz-tab-size:10;tab-size:10}.markdown-body .tab-size[data-tab-size="11"]{-moz-tab-size:11;tab-size:11}.markdown-body .tab-size[data-tab-size="12"]{-moz-tab-size:12;tab-size:12}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body .footnotes ol li{font-size:.9em}.markdown-body .footnotes ol li{counter-increment:fn;display:flex}.markdown-body .footnotes ol li:before{content:counter(fn)". ";font-weight:700}.markdown-body .footnotes ol li p{margin-top:0;margin-left:10px}.markdown-body .footnotes ol{list-style:none;counter-reset:fn}.markdown-body .footnotes ol li .footnote-back{padding-left:10px;font-weight:700}code{font-family:Menlo,Monaco,lucida console,Consolas,monospace}pre{margin:1em 0;overflow:auto}pre code{padding:10;overflow:visible}.sourceCode{background-color:initial;overflow:visible}hr{background-color:#1a1a1a;border:none;height:1px;margin:1em 0}table{margin:1em 0;border-collapse:collapse;width:100%;overflow-x:auto;display:block;font-variant-numeric:lining-nums tabular-nums}table caption{margin-bottom:.75em}tbody{margin-top:.5em;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a}th{border-top:1px solid #1a1a1a;padding:.25em .5em}td{padding:.125em .5em .25em}header{margin-bottom:4em;text-align:center}#TOC li{list-style:none}#TOC a:not(:hover){text-decoration:none}code{white-space:pre-wrap}span.smallcaps{font-variant:small-caps}span.underline{text-decoration:underline}div.column{display:inline-block;vertical-align:top;width:50%}div.hanging-indent{margin-left:1.5em;text-indent:-1.5em}ul.task-list{list-style:none}pre>code.sourceCode{white-space:pre;position:relative}pre>code.sourceCode>span{display:inline-block;line-height:1.25}pre>code.sourceCode>span:empty{height:1.2em}.sourceCode{overflow:visible}code.sourceCode>span{color:inherit;text-decoration:inherit}div.sourceCode{margin:1em 0}pre.sourceCode{margin:0}@media screen{div.sourceCode{overflow:auto}}@media print{pre>code.sourceCode{white-space:pre-wrap}pre>code.sourceCode>span{text-indent:-5em;padding-left:5em}}pre.numberSource code{counter-reset:source-line 0}pre.numberSource code>span{position:relative;left:-4em;counter-increment:source-line}pre.numberSource code>span>a:first-child::before{content:counter(source-line);position:relative;left:-1em;text-align:right;vertical-align:baseline;border:none;display:inline-block;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:0 4px;width:4em;color:#aaa}pre.numberSource{margin-left:3em;border-left:1px solid #aaa;padding-left:4px}div.sourceCode{}@media screen{pre>code.sourceCode>span>a:first-child::before{text-decoration:underline}}code span.al{color:red;font-weight:700}code span.an{color:#60a0b0;font-weight:700;font-style:italic}code span.at{color:#7d9029}code span.bn{color:#40a070}code span.bu{}code span.cf{color:#007020;font-weight:700}code span.ch{color:#4070a0}code span.cn{color:#800}code span.co{color:#60a0b0;font-style:italic}code span.cv{color:#60a0b0;font-weight:700;font-style:italic}code span.do{color:#ba2121;font-style:italic}code span.dt{color:#902000}code span.dv{color:#40a070}code span.er{color:red;font-weight:700}code span.ex{}code span.fl{color:#40a070}code span.fu{color:#06287e}code span.im{color:#007020;font-weight:700}code span.in{color:#60a0b0;font-weight:700;font-style:italic}code span.kw{color:#007020;font-weight:700}code span.op{color:#666}code span.ot{color:#007020}code span.pp{color:#bc7a00}code span.sc{color:#4070a0}code span.ss{color:#b68}code span.st{color:#4070a0}code span.va{color:#19177c}code span.vs{color:#4070a0}code span.wa{color:#60a0b0;font-weight:700;font-style:italic}.display.math{display:block;text-align:center;margin:.5rem auto}div.csl-bib-body{}div.csl-entry{clear:both}.hanging div.csl-entry{margin-left:2em;text-indent:-2em}div.csl-left-margin{min-width:2em;float:left}div.csl-right-inline{margin-left:2em;padding-left:1em}div.csl-indent{margin-left:2em}#refs:before{content:"Bibliographie";display:block;font-size:3.6rem;font-weight:700;margin-top:2em;margin-bottom:1em;line-height:1.25;letter-spacing:-.1rem}#refs div.csl-entry:before{content:" ";margin-left:-31px;margin-right:7px;margin-bottom:-7px;display:inline-block;min-width:22px;min-height:22px;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAMAAADzapwJAAAAV1BMVEUAAAD///////8AAAAREREzMzM2NjZAQEBERERISEhYWFhhYWFra2tubm53d3d/f3+BgYGCgoKEhISIiIiioqKmpqbIyMjJycnh4eH7+/v9/f3+/v7////R794jAAAAA3RSTlMAwcJd/YFNAAAAaUlEQVR42s3PNxbCMBREUUkjMjiS+fvfpm3l3POqObcb1kxQiAem92ln2o+/4DTBdwtOPXDUSeCq3DPpDgAuXx6xGppx/vAa404ZP+Z5BvqM9YGcTX/LvoQ7X+ABSYPlp4xVvgwLyhKMrc4HEH42TbsdAAAAAElFTkSuQmCC)}#refs div.csl-entry{margin-top:1.5em;margin-bottom:1.5em;margin-left:40px;text-indent:0}</style>
+	 	 </head>
+  <body>
+        <div id="whole_page">   
+      <section class="content" id="main">
+	<header class="header">
+	  <h1>TP Mesures de Consommation</h1>
+	</header>
+		<nav id="TOC">
+	  <div class="title">Menu</div>
+          <ul>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+<li><a href="#quelques-rappels-sur-la-puissance-et-lénergie"
+id="toc-quelques-rappels-sur-la-puissance-et-lénergie">Quelques rappels
+sur la puissance et l’énergie</a></li>
+<li><a href="#partie-1-jouons-un-peu-avec-un-wattmètre"
+id="toc-partie-1-jouons-un-peu-avec-un-wattmètre">Partie 1 : Jouons un
+peu avec un wattmètre</a>
+<ul>
+<li><a href="#mesures-de-puissance-et-dénergie-électrique"
+id="toc-mesures-de-puissance-et-dénergie-électrique">Mesures de
+puissance et d’énergie électrique</a></li>
+<li><a href="#émissions-de-gaz-à-effet-de-serre"
+id="toc-émissions-de-gaz-à-effet-de-serre">Émissions de gaz à effet de
+serre</a></li>
+</ul></li>
+<li><a href="#partie-2-jouons-un-peu-avec-les-sondes-logicielles"
+id="toc-partie-2-jouons-un-peu-avec-les-sondes-logicielles">Partie 2 :
+Jouons un peu avec les sondes logicielles</a>
+<ul>
+<li><a href="#jouons-un-peu-avec-le-tri-sélectif"
+id="toc-jouons-un-peu-avec-le-tri-sélectif">Jouons un peu avec le tri
+sélectif</a></li>
+<li><a href="#jouons-un-peu-avec-les-algorithmes"
+id="toc-jouons-un-peu-avec-les-algorithmes">Jouons un peu avec les
+algorithmes</a></li>
+<li><a href="#fiabilité-de-rapl" id="toc-fiabilité-de-rapl">Fiabilité de
+RAPL</a></li>
+<li><a
+href="#bon-alors-les-équipements-numériques-ça-consomme-beaucoup-ou-pas"
+id="toc-bon-alors-les-équipements-numériques-ça-consomme-beaucoup-ou-pas">Bon
+alors, les équipements numériques ça consomme beaucoup ou pas
+?!</a></li>
+</ul></li>
+</ul>	    
+	</nav>
+		<div class="container">      
+<h1 id="introduction">Introduction</h1>
+<p>Dans cette séance, nous allons apprendre à mesurer l’énergie
+électrique nécessaire à l’exécution de systèmes de calculs numériques,
+et essayer appréhender la pollution induite par cette consommation
+d’énergie. Nous allons commencer par quelques rappels et des calculs
+concernant la puissance et l’énergie électrique.</p>
+<p>En France (au moins), cette consommation en phase d’usage (que nous
+allons mesurer et après-midi) n’est pas celle qui a le plus d’impact
+environnemental dans le numérique. Ce n’est pas non plus une raison pour
+ne pas en parler, ni chercher des moyens de limiter cette consommation.
+Et puis, c’est une bonne occasion de parler également d’énergie et
+d’impact carbone au sens large.</p>
+<div class="note">
+<p>Ce TP est un énoncé de Sylvain Bouveret à l’Ensimag.</p>
+</div>
+<h1 id="quelques-rappels-sur-la-puissance-et-lénergie">Quelques rappels
+sur la puissance et l’énergie</h1>
+<p>L’énergie caractérise le service énergétique rendu (travail,
+éclairage, …). La calorie (4,18 J) est la quantité de chaleur nécessaire
+pour élever 1g d’eau de 1◦C.</p>
+<p>La puissance est le débit d’énergie qui a lieu lors d’une conversion,
+<span class="math inline">\(P = \frac{dE}{dt}\)</span> avec <span
+class="math inline">\(P\)</span> la puissance en Watt (W ou kW), <span
+class="math inline">\(E\)</span> l’énergie (J ou kWh) et <span
+class="math inline">\(t\)</span> le temps (s ou h).</p>
+<p>La puissance caractérise le convertisseur d’énergie et plus
+particulièrement sa capacité à transformer plus ou moins vite l’énergie.
+Ainsi un moteur électrique de 20 kW transforme une même quantité
+d’énergie électrique deux fois plus rapidement qu’un moteur de 10 kW, il
+convertit deux plus fois plus vite l’énergie électrique qu’il reçoit en
+énergie mécanique et effectue donc un même travail plus rapidement.</p>
+<p>Une transformation énergétique plus rapide nécessite un convertisseur
+plus puissant, donc plus cher, requérant plus de matières premières et
+consommant donc plus d’énergie grise, celle nécessaire à sa fabrication.
+En outre, vouloir réaliser plus rapidement un service énergétique
+requiert plus d’« énergie utile », par exemple : sur un trajet de 100 km
+une automobile dont la résistance à l’avancement serait de 400 N à 100
+km/h consommerait une énergie de 40 MJ (soit 400 100 103 J) et une
+puissance mécanique de 11 kW (11 kWh en 1 heure) ; ce même déplacement à
+130 km/h conduirait à une résistance à l’avancement de 650 N et
+requerrait 65 MJ et 23,5 kW (soit 18 kWh en 0,77 h).</p>
+<p><strong>Question 1</strong> : Indiquez la puissance approximative de
+quelques appareils électriques que vous connaissez (bouilloire, four,
+…).</p>
+<div class="note">
+<p><strong>Rappels : quelques notions physiques autour de
+l’électricité</strong></p>
+<p>Vous devez vous rappeler que <span class="math inline">\(P = U \cdot
+I\)</span>, et même que <span class="math inline">\(U = R \cdot
+I\)</span>, et peut-être aussi que <span class="math inline">\(I =
+\frac{dQ}{dt}\)</span>. Mais très souvent, des gens appliquent ces
+formules sans avoir d’intuition permettant d’appréhender la tension
+<span class="math inline">\(U\)</span>, l’intensité <span
+class="math inline">\(I\)</span>, la résistance <span
+class="math inline">\(R\)</span>, et <span
+class="math inline">\(Q\)</span> la quantité de charge.</p>
+<p>On peut faire une analogie entre le courant électrique à travers un
+circuit et un courant d’eau dans un tuyau. Dans ce cas :</p>
+<ul>
+<li>On peut voir le flot d’électrons dans le circuit comme le flot d’eau
+dans un tuyau ;</li>
+<li>On peut voir l’intensité I de la même manière que le débit d’eau
+dans le tuyau ;</li>
+<li>On peut voir la tension U, aussi appelée différence de potentiel,
+comme la différence de hauteur entre les deux bouts du tuyau, amenant la
+gravité à déplacer</li>
+<li>On peut voir la résistance comme un rétrécissement du tuyau.</li>
+</ul>
+</div>
+<h1 id="partie-1-jouons-un-peu-avec-un-wattmètre">Partie 1 : Jouons un
+peu avec un wattmètre</h1>
+<h2 id="mesures-de-puissance-et-dénergie-électrique">Mesures de
+puissance et d’énergie électrique</h2>
+<p>Il existe différents moyens de mesurer la puissance électrique
+consommée par un appareil. Une manière très courante d’évaluer la
+consommation des équiments numérique, surtout dans le monde des
+serveurs, est d’utiliser un dispositif du type PDU (<em>Power
+Distribution Unit</em>). Ce sont de grosses muliprises munis de sondes
+permettant de mesurer la consommation de chaque prise de manière fiable
+et suffisamment échantillonnée pour délivrer une estimation précise de
+l’énergie consommée. N’ayant pas à disposition ce type d’équipement,
+dans ce TP, nous allons en utiliser 2 :</p>
+<ul>
+<li>un wattmètre branché sur l’alimentation électrique de divers
+appareils. Nous allons utiliser dans ce TP un wattmètre Voltcraft Energy
+Logger 4000F (gentiment prêté par ÉcoInfo pour notre TP − on dit merci
+ÉcoInfo) ;</li>
+<li>un ensemble de sondes logicielles permettant d’estimer la
+consommation électrique induite par l’exécution de certains programmes
+sur une machine (partie suivante du TP).</li>
+</ul>
+<p>Dans cette partie du TP, nous allons nous focaliser sur un ensemble
+d’appareils que nous avons directement à notre disposition. L’objectif
+de cette partie sera essentiellement de remplir la <span
+class="citation"
+data-cites="tbl:conso1">(<strong>tbl:conso1?</strong>)</span>.</p>
+<table>
+<caption>Puissance et énergie électriques consommées par différents
+appareils. {#tbl:conso1}</caption>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Appareil</th>
+<th>Puissance estimée</th>
+<th>Puissance mesurée</th>
+<th>Énergie calculée à partir de la moyenne</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PC fixe</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Ordinateur portable, batterie en charge</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Ordinateur portable, batterie chargée</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Chargeur de portable seul</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Écran plat</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Téléphone en charge</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Question 2</strong> : Sans rien mesurer, ordonnez la liste
+des appareils par ordre croissant de la puissance que vous pensez
+nécessaire pour les faire fonctionner puis remplissez la première
+colonne de la <span class="citation"
+data-cites="tbl:conso1">(<strong>tbl:conso1?</strong>)</span> avec la
+puissance que vous estimez nécessaire. Vous pourrez adapter la liste des
+appareils en fonction de ce que vous avez à disposition pendant le
+TP.</p>
+<p><strong>Question 3</strong> : Maintenant, notez la puissance
+électrique consommée par les différents appareils à l’aide d’un
+wattmètre (remplissez la troisième colonne de la la <span
+class="citation"
+data-cites="tbl:conso1">(<strong>tbl:conso1?</strong>)</span>).</p>
+<p><strong>Question 4</strong> : Calculez l’énergie nécessaire au
+fonctionnement de chaque appareil pendant 1 heure, en supposant que la
+puissance soit constante (remplissez la quatrième colonne de la <span
+class="citation"
+data-cites="tbl:conso1">(<strong>tbl:conso1?</strong>)</span>).</p>
+<p><strong>Question 5</strong> : Pour certains appareils, ce n’est pas
+un problème de calculer l’énergie consommée en supposant la puissance
+constante, mais pour beaucoup d’appareils numériques, c’en est un. Par
+exemple, l’énergie consommée par des serveurs varie en fonction de la
+charge. C’est le cas également des terminaux et des écrans. Dans cette
+question, nous allons observer cela sur un écran. Procédez comme suit
+(lisez toutes les instructions ci-dessous avant de commencer).</p>
+<ul>
+<li>Munissez-vous d’un crayon, d’une feuille de papier et d’un
+chronomètre.</li>
+<li>Branchez le wattmètre sur la prise d’alimentation de l’écran et
+placez-le en mode puissance.</li>
+<li>Allumez l’écran (si ce n’est pas déjà fait)</li>
+<li>Laissez l’écran allumé pendant 1 minute. Pendant cette minute, notez
+sur votre feuille la puissance indiquée par le wattmètre, <strong>toutes
+les 5 secondes</strong>. Pendant que quelqu’un relève ces puissances,
+quelqu’un d’autre peut se charger d’afficher des choses différentes sur
+l’écran, comme par exemple 20 secondes une image avec un fond sombre, 20
+secondes avec un fond clair, etc. (pour bien faire, notez au fur et à
+mesure ce que vous affichez, le type de couleurs, etc.).</li>
+<li>Mettez l’écran en veille pendant 30 secondes et continuez à relever
+les puissances <strong>toutes les 5 secondes</strong>.</li>
+<li>Éteignez complètement l’écran et continuez la mesure pendant 30
+secondes environ.</li>
+</ul>
+<div class="note">
+<p>En mode affichage de puissance, le wattmètre nous donne deux
+indications de valeurs de puissances, la puissance apparente et la
+puissance réelle. Laquelle faut-il considérer ?</p>
+<p>En fait, les données relevées par le wattmètre à chaque seconde sont
+les suivantes :</p>
+<ul>
+<li>l’estampille temporelle (l’horaire, quoi) <span
+class="math inline">\(t\)</span> ;</li>
+<li>la tension <span class="math inline">\(U\)</span> (en volts) ;</li>
+<li>l’intensité <span class="math inline">\(I\)</span> (en
+ampères) ;</li>
+<li>le facteur de puissance <span class="math inline">\(\lambda\)</span>
+(sans unité).</li>
+</ul>
+<p>Il n’y a pas ici d’information de puissance, mais en fait, ces
+données sont suffisantes pour calculer cette information. Comme nous
+l’avons rappelé dans la note précédente, la puissance électrique peut
+être calculée comme le produit de la tension et de l’intensité, <span
+class="math inline">\(U \cdot I\)</span>. En fait, pour un courant
+alternatif (en régime sinusoïdal, comme ce qui sort de notre prise de
+courant), cette formule nous donne la <em>puissance apparente</em> <span
+class="math inline">\(S\)</span>, qui n’est pas celle qui nous intéresse
+ici.</p>
+<p>La puissance qui nous intéresse est la <em>puissance réelle</em>
+<span class="math inline">\(P\)</span>, qui est calculée en fonction de
+la puissance apparente <span class="math inline">\(S\)</span> et du
+déphasage entre le courant et la tension <span
+class="math inline">\(\varphi\)</span> : <span class="math inline">\(P =
+S \times \cos{\varphi}\)</span>. La valeur <span
+class="math inline">\(\cos{\varphi}\)</span> est exactement ce que l’on
+appelle le <em>facteur de puissance</em>.</p>
+<p>En d’autres termes, ici, on a : <span class="math inline">\(P = U
+\cdot I \cdot \lambda\)</span>.</p>
+</div>
+<p><strong>Question 6</strong> : relevez toutes les valeurs que vous
+avez notées dans un fichier CSV au format suivant :</p>
+<ul>
+<li>séparateur de colonnes : <code>,</code></li>
+<li>colonne 1 : estampille temporelle au format
+<code>YYYY-MM-DD hh:mm:ss</code> (reconstruisez cette estampille
+temporelle à partir de l’heure approximative de début de votre
+expérimentation, et de votre fréquence d’échantillonnage)</li>
+<li>colonne 2 : valeur de consommation relevée (en watts)</li>
+</ul>
+<p><strong>Question 7</strong> : Si tout se passe bien, vous avez obtenu
+à la question précédente des données au format à peu près similaire à ce
+qui suit :</p>
+<pre><code>2022-03-10 16:35:00,11.0
+2022-03-10 16:36:05,11.0
+2022-03-10 16:37:10,11.2
+2022-03-10 16:38:15,11.0
+2022-03-10 16:39:20,11.2
+2022-03-10 16:40:25,12.2
+[...]</code></pre>
+<p>Écrivez deux scripts Python ayant respectivement pour objectif :</p>
+<ol type="1">
+<li>de calculer l’énergie totale consommée entre deux estampilles
+temporelles ;</li>
+<li>de tracer la courbe des mesures contenues dans le fichier (vous
+pourrez par exemple utiliser <code>pyplot</code> pour cela).</li>
+</ol>
+<p>Utilisez le premier script pour compléter la cinquième colonne de la
+table 1.</p>
+<p><strong>Question 8</strong> : rebranchez le wattmètre sur la prise de
+l’ordinateur que vous utilisez. Cela vous servira à la toute dernière
+partie de ce TP.</p>
+<h2 id="émissions-de-gaz-à-effet-de-serre">Émissions de gaz à effet de
+serre</h2>
+<p>L’électricité est obtenue par transformation d’une source d’énergie
+primaire, typiquement combustion d’énergie fossile ou turbinage
+actionnée par le vent ou l’eau. Dans chaque pays, ces moyens de
+production d’électricité sont différents et ont des émissions de gaz à
+effet de serre très différents. En France, les émissions de CO2 moyens
+correspondant à chaque kWh produit peuvent être trouvés sur <a
+href="https://www.rte-france.com/eco2mix/les-emissions-de-co2-par-kwh-produit-en-france"
+class="uri">https://www.rte-france.com/eco2mix/les-emissions-de-co2-par-kwh-produit-en-france</a>.</p>
+<p><strong>Question 9</strong> : Remplissez la table ci-dessous (la
+deuxième colonne correspond aux mesures faites précédemment et relevées
+dans la table 1)</p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 10%" />
+<col style="width: 24%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Appareil</th>
+<th>Puissance mesurée</th>
+<th>Eq CO<sub>2</sub> pour 1h de fonctionnement</th>
+<th>Eq CO<sub>2</sub> pour une utilisation mensuelle typique (que vous
+estimerez)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PC fixe</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Ordinateur portable, batterie en charge</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Ordinateur portable, batterie chargée</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Chargeur de portable seul</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Écran plat</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Téléphone en charge</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Question 10</strong> : Calculez l’équivalent carbone des
+mêmes appareils pour l’Allemagne, la Pologne et la Suède en vous
+appuyant sur les chiffres trouvés là : <a
+href="http://www.electricitymap.org"
+class="uri">http://www.electricitymap.org</a>.</p>
+<p><strong>Question 11</strong> : À combien de kilomètres parcourus en
+voiture correspond, en terme d’émission de CO<sub>2</sub>, le
+fonctionnement de tous les ordinateurs fixes de la salle pendant un
+mois ? Considérez qu’une voiture émet environ 218 g eq.CO<sub>2</sub>
+par km (source : Base Carbone de l’Ademe pour une voiture à motorisation
+moyenne, 2018), et prenez des hypothèses quant au nombre d’heures
+d’activité des machines.</p>
+<h1 id="partie-2-jouons-un-peu-avec-les-sondes-logicielles">Partie 2 :
+Jouons un peu avec les sondes logicielles</h1>
+<p>Dans cette section, nous allons nous pencher plus en détails sur la
+consommation de programmes, en utilisant essentiellement des sondes
+logicielles. Ce que l’on appelle « sonde logicielle » ici est un petit
+bout de code implanté sur la machine au niveau logiciel, et qui nous
+permet d’avoir accès à une estimation de la consommation électrique de
+certains composants. Comme nous allons le voir, la fiabilité de ces
+sondes n’est pas garantie. Il faut donc prendre les informations
+fournies par ces sondes pour ce qu’elles sont, à savoir un ordre de
+grandeur permettant de donner quelques indications sur les consommations
+<em>relatives</em> de différents programmes.</p>
+<p>Nous allons dans ce TP utiliser une bibliothèque Python permettant
+d’exploiter ces sondes logicielles pour faire du relevé de consommation
+: il s’agit de <a
+href="https://github.com/powerapi-ng/pyJoules">PyJoules</a>. Il vous
+faudra probablement l’installer sur les machines. Un petit
+<code>pip3 install pyjoules</code> devrait faire l’affaire.</p>
+<h2 id="jouons-un-peu-avec-le-tri-sélectif">Jouons un peu avec le tri
+sélectif</h2>
+<p>Je vous ai écrit <a href="04-mesure-conso.html">une petite
+documentation</a> sur la manière dont les sondes logicielles
+fonctionnent (essentiellement sous Linux). Allez la lire maintenant
+(c’est assez long).</p>
+<p><strong>Question 12</strong> : Vous avez vu que la doc sus-mentionnée
+contient <a href="04-mesure-conso.html#sec:pyjoules-usecase">un cas
+d’utilisation complet</a> sur la comparaison d’algorithmes de tri.
+Essayez de lancer ce cas d’utilisation sur votre machine, afin de
+retrouver les ordres de grandeur indiqués. Jouez un peu avec les
+paramètres, et essayez avec d’autres algorithmes de tri si vous
+voulez.</p>
+<p>NB : Selon votre machine, vous devrez peut-être installer quelques
+bibliothèques en plus. Ça ne devrait pas vous poser de problème ;
+<code>pip</code> est votre ami.</p>
+<h2 id="jouons-un-peu-avec-les-algorithmes">Jouons un peu avec les
+algorithmes</h2>
+<p>Passons à une petite application concrète. Vous enseignez désormais
+les <a href="https://bpi-etu.pages.ensimag.fr/">Bases de la
+Programmation Impérative</a> aux étudiants de 1<sup>ère</sup> année de
+l’Ensimag. Vous leur avez donné un petit exercice classique de
+programmation : recherche d’une valeur dans une liste triée. Pour cet
+exercice, vous leur avez donné le squelette de code suivant :</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> recherche(tab, a_rechercher):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Recherche une valeur dans une liste triée.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    :param tab: une liste (list Python) triée.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    :param a_rechercher: la valeur à rechercher</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    :returns: True si la valeur est bien dans la liste,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">        et False sinon. Si la liste tab n&#39;est pas triée</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">        alors le comportement de cette fonction n&#39;est pas</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">        garanti.</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div>
+<p>Vous avez récupéré les travaux de 5 élèves. Tous ces travaux sont
+fonctionnellement corrects (dans le sens où ils renvoient la bonne
+valeur), mais les algorithmes utilisés sont tous différents :</p>
+<ul>
+<li>Élève 1 : une recherche linéaire (on parcourt tous les éléments du
+tableau dans l’ordre, jusqu’à trouver le bon).</li>
+<li>Élève 2 : une recherche dichotomique récursive, en utilisant des
+tranches de tableau (<em>slices</em>, du type
+<code>tab[i:j]</code>).</li>
+<li>Élève 3 : une recherche dichotomique itérative, en utilisant des
+tranches de tableau (<em>slices</em>, du type
+<code>tab[i:j]</code>).</li>
+<li>Élève 4 : une recherche dichotomique récursive, sans trancher de
+liste.</li>
+<li>Élève 5 : une recherche dichotomique itérative, sans trancher de
+liste.</li>
+</ul>
+<p>Toutes ces solutions ne sont probablement pas égales en termes de
+performances. Vous cherchez un moyen d’expliquer poliment aux élèves
+concernés que leur code est nul. Vous décidez donc de faire des relevés
+de consommation pour ces cinq codes, et de faire des comparaisons.</p>
+<p><strong>Question 13</strong> : Écrivez une implémentation Python de
+ces cinq codes et testez simplement qu’ils fonctionnent sur des tableaux
+aléatoires.</p>
+<p><strong>Question 14</strong> : Implémentez la fonction de test
+suivante.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_recherche(tab, fonction_recherche, nb_elements):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Recherche un certain nombre d&#39;éléments aléatoires dans un tableau.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    :param tab: une liste (list Python) triée.</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    :param fonction_recherche: une fonction de recherche d&#39;élément dans</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">        un tableau.</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">    :param nb_elements: nombre d&#39;éléments à rechercher. La fonction doit</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">        tirer aléatoirement nb_elements (qui sont dans le tableau ou pas)</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">        et utiliser la fonction de recherche pour chercher ces éléments.</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    :returns: None</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">    ...</span></span></code></pre></div>
+<p><strong>Question 15</strong> : Instrumentez toutes vos fonctions de
+recherche avec les annotations pyJoules, et écrivez une fonction
+principale qui génère un tableau aléatoire (trié) et lance
+<code>test_recherche</code>. Vous pouvez vous inspirer de ce qui a été
+fait dans le cas d’utilisation tri pour écrire cette fonction, et
+exporter les données de consommation de manière à les visualiser.</p>
+<p><strong>Question 16</strong> : Jouez un peu avec les paramètres, et
+préparez un argumentaire solide pour expliquer aux élèves concernés par
+les plus mauvais résultats qu’ils repasseront BPI en session 2.</p>
+<h2 id="fiabilité-de-rapl">Fiabilité de RAPL</h2>
+<p>Comme je le disais en préambule de cette partie, même si les sondes
+logicielles donnent une indication de consommation électrique, elles ne
+fournissent aucune garantie réelle sur la pertinence des valeurs
+fournies. Nous allons dans cette section tâcher d’évaluer dans quelle
+mesure ces valeurs reflètent la consommation réelle de la machine. Ça
+tombe bien, nous avons des wattmètres à disposition.</p>
+<div class="note">
+<p>Il convient de noter qu’une bonne partie de la consommation
+électrique échappe au domaine de mesure des compteurs RAPL, notamment
+tout ce qui concerne les périphériques, les supports de stockage type
+disques durs, etc.</p>
+<p>Cela peut expliquer en grande partie les différences observées.</p>
+</div>
+<p>Dans cette partie, plutôt que d’utiliser pyJoules, nous allons lire
+directement les valeurs dans les fichiers qui vont bien (NB : c’est
+exactement ce que fait pyJoules en fait). Les fichiers concernés sont
+tous les fichiers du dossier
+<code>/sys/devices/virtual/powercap/intel-rapl/</code>. Dans ce dossier,
+il existe un sous-dossier par <em>domaine</em> ; un domaine est un
+ensemble de composants dont la consommation est mesurée. Selon les
+machines, il existe un ou plusieurs domaines. Pour le moment, nous
+allons lire les infos du domaine 0, c’est à dire dans le dossier
+<code>interl-rapl:0</code>.</p>
+<p>Le fichier qui contient les valeurs de consommation d’énergie est le
+fichier <code>energy_uj</code>. Comme son nom l’indique, il contient la
+quantité d’énergie consommée depuis un certain temps (probablement le
+démarrage de la machine), exprimée en µJ. Pour connaître la quantité
+d’énergie dépensée pendant un certain temps, il suffit donc de lire la
+valeur indiquée par ce fichier au début et à la fin de notre période de
+mesure, et de faire une différence.</p>
+<p><strong>Question 17</strong> : Écrivez un petit script (en bash par
+exemple) permettant d’aller lire périodiquement la valeur indiquée dans
+le fichier <code>energy_uj</code>, tous les <span
+class="math inline">\(n\)</span> millisecondes, et d’afficher dans la
+console, à chaque relevé, une ligne au format CSV suivant :</p>
+<ul>
+<li>séparateur de colonnes : <code>,</code></li>
+<li>colonne 1 : estampille temporelle au format
+<code>YYYY-MM-DD hh:mm:ss</code></li>
+<li>colonne 2 : valeur de puissance moyenne relevée (en watts) − vous
+l’avez compris, cette valeur correspond à la différence entre deux
+valeurs successives de <code>energy_uj</code>, divisée par le temps
+entre les deux mesures. Attention, il vous faudra faire la conversion µJ
+→ Wh avant de convertir en watts.</li>
+</ul>
+<div class="note">
+<p>Allez, je suis sympa, je vous donne la conversion joules →
+wattheures. 1 Wh = 3600 J.</p>
+</div>
+<p><strong>Question 18</strong> : Votre wattmètre est encore branché sur
+la prise électrique d’alimentation du PC fixe. Ça tombe bien, vous allez
+l’utiliser maintenant. Faites comme en Question 5 et mesurez la
+puissance relevée par le wattmètre pendant 1 ou 2 minutes, toutes les 5
+secondes. En parallèle (c’est-à-dire en même temps), lancez le script de
+relevé des valeurs élaboré à la question suivante.</p>
+<p><strong>Question 19</strong>_: Relevez dans un fichier CSV toutes les
+valeurs notées, au même format que précédemment. Lancez vos scripts de
+visualisation et de calcul de l’énergie électrique consommée sur les
+deux jeux de données (relevés manuels au wattmètre et relevés
+automatiques des compteurs RAPL). Les valeurs sont-elles
+cohérentes ?</p>
+<h2
+id="bon-alors-les-équipements-numériques-ça-consomme-beaucoup-ou-pas">Bon
+alors, les équipements numériques ça consomme beaucoup ou pas ?!</h2>
+<p><strong>Question 20</strong>_: Il est maintenant temps de prendre un
+peu de recul, et de comparer la consommation d’électricité que l’on a
+mesurée cet après-midi à l’énergie consommée pour se déplacer ou se
+chauffer.</p>
+<!-- # Partie 3 : Bon, j'ai consommé quoi aujourd'hui ? -->
+<!-- Vous vous souvenez du wattmètre que l'on avait laissé branché à la première partie ? Eh bien en fait il permet d'enregistrer les données en mémoire et de les transférer sur une carte SD. -->
+<!-- *Vous pouviez pas me le dire ?* -->
+<!-- En fait, si nous ne l'avons pas fait à la partie 1, c'est que la fréquence de stockage des valeurs du wattmètre est malheureusement bien trop faible : 1 toutes les minutes. On ne peut pas observer grand chose pour une expérimentation qui dure très peu de temps. En revanche, on peut utiliser le wattmètre pour faire des relevés sur le temps long, ce qui a un intérêt certain. Aujourd'hui, nous allons utiliser ce mécanisme pour essayer de déterminer ce que nous a coûté ce TP. -->
+<!-- **Question 20** :  Pour relever les données, procédez comme suit : -->
+<!-- * Débranchez le wattmètre et insérez une carte SD dans le compartiment latéral. -->
+<!-- * Branchez le wattmètre. -->
+<!-- * Lorsque l'affichage s'allume, appuyez sur la touche ▶ -->
+<!-- * Lorsque l'indicateur de mémoire passe à 99 %, débranchez le wattmètre. Les données sont transmises. -->
+<!-- Récupérez les données (fichiers d'extension `.BIN`) sur un ordinateur. -->
+<!-- **Question 21** : Les données que vous avez récupérées sont au format binaire. Si vous savez lire directement le binaire, tant mieux pour vous (vous êtes peut-être un robot). Si comme moi, vous ne savez pas, il vous faudra une bibliothèque pour les extraire sous un format exploitable. Regardez du côté de <https://github.com/Lekensteyn/el4000>. -->
+<!-- Si vous utilisez cette bibliothèque, il suffit que vous exportiez vos données avec l'option `-p watts`, et vous récupérez directement vos données au même format que celui que je vous ai demandé en question 6. Réutilisez donc les scripts écrits en Question 7 pour visualiser les valeurs de puissance et calculer l'énergie totale consommée pendant le TP. -->
+	</div>
+      </section>
+    </div>  
+    
+      </body>
+</html>

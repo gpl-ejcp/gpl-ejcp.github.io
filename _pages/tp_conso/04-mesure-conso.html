@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+                <title>Estimer la consommation avec des sondes
+logicielles</title>
+            <script
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+            type="text/javascript"></script>
+        <!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+	<![endif]-->
+	 	 <style>
+  /*!normalize.css v3.0.2 | MIT License | git.io/normalize*/html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:initial}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}.container{position:relative;width:100%;max-width:960px;margin:0 auto;padding:0 20px;box-sizing:border-box}.column,.columns{width:100%;float:left;box-sizing:border-box}@media(min-width:400px){.container{width:85%;padding:0}}@media(min-width:550px){.container{width:80%}.column,.columns{margin-left:4%}.column:first-child,.columns:first-child{margin-left:0}.one.column,.one.columns{width:4.66666666667%}.two.columns{width:13.3333333333%}.three.columns{width:22%}.four.columns{width:30.6666666667%}.five.columns{width:39.3333333333%}.six.columns{width:48%}.seven.columns{width:56.6666666667%}.eight.columns{width:65.3333333333%}.nine.columns{width:74%}.ten.columns{width:82.6666666667%}.eleven.columns{width:91.3333333333%}.twelve.columns{width:100%;margin-left:0}.one-third.column{width:30.6666666667%}.two-thirds.column{width:65.3333333333%}.one-half.column{width:48%}.offset-by-one.column,.offset-by-one.columns{margin-left:8.66666666667%}.offset-by-two.column,.offset-by-two.columns{margin-left:17.3333333333%}.offset-by-three.column,.offset-by-three.columns{margin-left:26%}.offset-by-four.column,.offset-by-four.columns{margin-left:34.6666666667%}.offset-by-five.column,.offset-by-five.columns{margin-left:43.3333333333%}.offset-by-six.column,.offset-by-six.columns{margin-left:52%}.offset-by-seven.column,.offset-by-seven.columns{margin-left:60.6666666667%}.offset-by-eight.column,.offset-by-eight.columns{margin-left:69.3333333333%}.offset-by-nine.column,.offset-by-nine.columns{margin-left:78%}.offset-by-ten.column,.offset-by-ten.columns{margin-left:86.6666666667%}.offset-by-eleven.column,.offset-by-eleven.columns{margin-left:95.3333333333%}.offset-by-one-third.column,.offset-by-one-third.columns{margin-left:34.6666666667%}.offset-by-two-thirds.column,.offset-by-two-thirds.columns{margin-left:69.3333333333%}.offset-by-one-half.column,.offset-by-one-half.columns{margin-left:52%}}html{font-size:62.5%}body{font-size:1.5em;line-height:1.6;font-weight:400;font-family:raleway,helveticaneue,helvetica neue,Helvetica,Arial,sans-serif;color:#222}h1,h2,h3,h4,h5,h6{margin-bottom:2rem;font-weight:300}h1{font-size:4rem;line-height:1.2;letter-spacing:-.1rem}h2{font-size:3.6rem;line-height:1.25;letter-spacing:-.1rem}h3{font-size:3rem;line-height:1.3;letter-spacing:-.1rem}h4{font-size:2.4rem;line-height:1.35;letter-spacing:-.08rem}h5{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem}h6{font-size:1.5rem;line-height:1.6;letter-spacing:0}@media(min-width:550px){h1{font-size:5rem}h2{font-size:4.2rem}h3{font-size:3.6rem}h4{font-size:3rem}h5{font-size:2.4rem}h6{font-size:1.5rem}}p{margin-top:0}a{color:#b77e13;text-decoration:none}a:hover{text-decoration:underline}.button,button,input[type=submit],input[type=reset],input[type=button]{display:inline-block;height:38px;padding:0 30px;color:#bbb;text-align:center;font-size:11px;font-weight:600;line-height:38px;letter-spacing:.1rem;text-transform:uppercase;text-decoration:none;white-space:nowrap;background-color:initial;border-radius:4px;border:1px solid #bbb;cursor:pointer;box-sizing:border-box}.button:hover,button:hover,input[type=submit]:hover,input[type=reset]:hover,input[type=button]:hover,.button:focus,button:focus,input[type=submit]:focus,input[type=reset]:focus,input[type=button]:focus{color:#eee;border-color:#eee;outline:0}.button.button-primary,button.button-primary,input[type=submit].button-primary,input[type=reset].button-primary,input[type=button].button-primary{color:#fff;background-color:#33c3f0;border-color:#33c3f0}.button.button-primary:hover,button.button-primary:hover,input[type=submit].button-primary:hover,input[type=reset].button-primary:hover,input[type=button].button-primary:hover,.button.button-primary:focus,button.button-primary:focus,input[type=submit].button-primary:focus,input[type=reset].button-primary:focus,input[type=button].button-primary:focus{color:#fff;background-color:#1eaedb;border-color:#1eaedb}input[type=email],input[type=number],input[type=search],input[type=text],input[type=tel],input[type=url],input[type=password],textarea,select{height:38px;padding:6px 10px;background-color:#555;color:#eee;border:1px solid #d1d1d1;border-radius:4px;box-shadow:none;box-sizing:border-box}input[type=email],input[type=number],input[type=search],input[type=text],input[type=tel],input[type=url],input[type=password],textarea{-webkit-appearance:none;-moz-appearance:none;appearance:none}textarea{min-height:65px;padding-top:6px;padding-bottom:6px}input[type=email]:focus,input[type=number]:focus,input[type=search]:focus,input[type=text]:focus,input[type=tel]:focus,input[type=url]:focus,input[type=password]:focus,textarea:focus,select:focus{border:1px solid #33c3f0;outline:0}label,legend{display:block;margin-bottom:.5rem;font-weight:600}fieldset{padding:0;border-width:0}input[type=checkbox],input[type=radio]{display:inline}label>.label-body{display:inline-block;margin-left:.5rem;font-weight:400}ul{list-style:disc outside}ol{list-style:decimal outside}ol,ul{padding-left:2rem}ul ul,ul ol,ol ol,ol ul{margin:1.5rem 0 1.5rem 3rem;font-size:90%}li{margin-bottom:.5rem}code{padding:.2rem .5rem;margin:0 .2rem;font-size:90%;white-space:nowrap;background:#f1f1f1;border:1px solid #e1e1e1;border-radius:4px}pre>code{display:block;padding:1rem 1.5rem;white-space:pre}th,td{padding:12px 15px;text-align:left;border-bottom:1px solid #e1e1e1}tr.header{background-color:#cdcdcd}tr.even{background-color:#ddd}tr.odd{background-color:#eee}table{width:100%}button,.button{margin-bottom:1rem}input,textarea,select,fieldset{margin-bottom:1.5rem}pre,blockquote,dl,figure,table,p,ul,ol,form{margin-bottom:2.5rem}.u-full-width{width:100%;box-sizing:border-box}.u-max-full-width{max-width:100%;box-sizing:border-box}.u-pull-right{float:right}.u-pull-left{float:left}hr{margin-top:3rem;margin-bottom:3.5rem;border-width:0;border-top:1px solid #e1e1e1}.container:after,.row:after,.u-cf{content:"";display:table;clear:both}@media(min-width:400px){}@media(min-width:550px){}@media(min-width:750px){}@media(min-width:1000px){}@media(min-width:1200px){}@font-face{font-family:lato;font-style:italic;font-weight:400;font-display:swap;src:local('Lato Italic'),local('Lato-Italic'),url(fonts/S6u8w4BMUTPHjxswWw.ttf)format('truetype')}@font-face{font-family:lato;font-style:italic;font-weight:700;font-display:swap;src:local('Lato Bold Italic'),local('Lato-BoldItalic'),url(fonts/S6u_w4BMUTPHjxsI5wqPHA.ttf)format('truetype')}@font-face{font-family:lato;font-style:normal;font-weight:400;font-display:swap;src:local('Lato Regular'),local('Lato-Regular'),url(fonts/S6uyw4BMUTPHvxk.ttf)format('truetype')}@font-face{font-family:lato;font-style:normal;font-weight:700;font-display:swap;src:local('Lato Bold'),local('Lato-Bold'),url(fonts/S6u9w4BMUTPHh6UVew8.ttf)format('truetype')}body{font-family:lato,Verdana,Arial,Sans-Serif;background-color:#efefef;color:#444}.header{padding-top:6rem;padding-bottom:6rem;margin-bottom:3rem;width:100%;text-align:center;background-color:#fff;color:#80b84b}tr.header{text-align:center;background-color:#ccc;color:#444}.footer{width:100%;background-color:#ccc}table .telechargement{text-align:right}h2,h3{font-weight:700}h2,h3{margin-top:6rem}select{color:#fff}#connexionBox{padding:10px;float:right;background-color:#555}.thematique,.etudiants{padding:10px;margin-bottom:20px;border:1px solid #aaa;border-radius:4px}.thematique,.etudiants ul{padding:0;margin:0}.success{background-color:#80b84b;float:left;border-radius:4px;padding:10px}.success h2{margin-top:10px;margin-bottom:10px}.success p{margin:5px 0}ul.errors{background-color:#ae0108;border-radius:4px;padding:10px}ul.errors li{list-style:none;margin-top:1rem;margin-bottom:1rem}textarea.answers{width:100%}pre.answers{font-family:lato,Verdana,Arial,Sans-Serif;border:1px solid #bbb;border-radius:4px;background-color:#555;color:#eee;padding:10px}nav{display:none}@media(min-width:1500px){nav{display:block;position:absolute;top:40%;left:20px;border-right:3px solid #444;padding-right:30px;max-width:15%}nav ul{margin:0;text-align:left}}nav .title{display:block;font-weight:700;font-size:2rem;line-height:5rem}div.note{padding:20px;background-color:rgba(90,147,196,.2);border-left:5px solid rgba(90,147,196,.8);margin:1.5rem 0}div.note p:last-child,div.note ul:last-child{margin-bottom:0}div.note.danger{background-color:#f2dede;border-left:5px solid #a94442}pre.console{background-color:rgba(128,128,128,.2);border-left:5px solid rgba(128,128,128,.8)}pre code.sourceCode.java{background-color:rgba(90,147,196,.2);border-left:5px solid rgba(90,147,196,.8)}code.sourceCode.python{background-color:rgb(134,186,71,.2)}pre code.sourceCode.python{border-left:5px solid rgb(134,186,71,.8)}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:initial;border:0}.markdown-body .commit-tease-sha{display:inline-block;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:90%;color:#444d56}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body .blob-wrapper{overflow-x:auto;overflow-y:hidden}.markdown-body .blob-wrapper-embedded{max-height:240px;overflow-y:auto}.markdown-body .blob-num{width:1%;min-width:50px;padding-right:10px;padding-left:10px;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;line-height:20px;color:rgba(27,31,35,.3);text-align:right;white-space:nowrap;vertical-align:top;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-body .blob-num:hover{color:rgba(27,31,35,.6)}.markdown-body .blob-num:before{content:attr(data-line-number)}.markdown-body .blob-code{position:relative;padding-right:10px;padding-left:10px;line-height:20px;vertical-align:top}.markdown-body .blob-code-inner{overflow:visible;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;color:#24292e;word-wrap:normal;white-space:pre}.markdown-body .pl-token.active,.markdown-body .pl-token:hover{cursor:pointer;background:#ffea7f}.markdown-body .tab-size[data-tab-size="1"]{-moz-tab-size:1;tab-size:1}.markdown-body .tab-size[data-tab-size="2"]{-moz-tab-size:2;tab-size:2}.markdown-body .tab-size[data-tab-size="3"]{-moz-tab-size:3;tab-size:3}.markdown-body .tab-size[data-tab-size="4"]{-moz-tab-size:4;tab-size:4}.markdown-body .tab-size[data-tab-size="5"]{-moz-tab-size:5;tab-size:5}.markdown-body .tab-size[data-tab-size="6"]{-moz-tab-size:6;tab-size:6}.markdown-body .tab-size[data-tab-size="7"]{-moz-tab-size:7;tab-size:7}.markdown-body .tab-size[data-tab-size="8"]{-moz-tab-size:8;tab-size:8}.markdown-body .tab-size[data-tab-size="9"]{-moz-tab-size:9;tab-size:9}.markdown-body .tab-size[data-tab-size="10"]{-moz-tab-size:10;tab-size:10}.markdown-body .tab-size[data-tab-size="11"]{-moz-tab-size:11;tab-size:11}.markdown-body .tab-size[data-tab-size="12"]{-moz-tab-size:12;tab-size:12}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body .footnotes ol li{font-size:.9em}.markdown-body .footnotes ol li{counter-increment:fn;display:flex}.markdown-body .footnotes ol li:before{content:counter(fn)". ";font-weight:700}.markdown-body .footnotes ol li p{margin-top:0;margin-left:10px}.markdown-body .footnotes ol{list-style:none;counter-reset:fn}.markdown-body .footnotes ol li .footnote-back{padding-left:10px;font-weight:700}code{font-family:Menlo,Monaco,lucida console,Consolas,monospace}pre{margin:1em 0;overflow:auto}pre code{padding:10;overflow:visible}.sourceCode{background-color:initial;overflow:visible}hr{background-color:#1a1a1a;border:none;height:1px;margin:1em 0}table{margin:1em 0;border-collapse:collapse;width:100%;overflow-x:auto;display:block;font-variant-numeric:lining-nums tabular-nums}table caption{margin-bottom:.75em}tbody{margin-top:.5em;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a}th{border-top:1px solid #1a1a1a;padding:.25em .5em}td{padding:.125em .5em .25em}header{margin-bottom:4em;text-align:center}#TOC li{list-style:none}#TOC a:not(:hover){text-decoration:none}code{white-space:pre-wrap}span.smallcaps{font-variant:small-caps}span.underline{text-decoration:underline}div.column{display:inline-block;vertical-align:top;width:50%}div.hanging-indent{margin-left:1.5em;text-indent:-1.5em}ul.task-list{list-style:none}pre>code.sourceCode{white-space:pre;position:relative}pre>code.sourceCode>span{display:inline-block;line-height:1.25}pre>code.sourceCode>span:empty{height:1.2em}.sourceCode{overflow:visible}code.sourceCode>span{color:inherit;text-decoration:inherit}div.sourceCode{margin:1em 0}pre.sourceCode{margin:0}@media screen{div.sourceCode{overflow:auto}}@media print{pre>code.sourceCode{white-space:pre-wrap}pre>code.sourceCode>span{text-indent:-5em;padding-left:5em}}pre.numberSource code{counter-reset:source-line 0}pre.numberSource code>span{position:relative;left:-4em;counter-increment:source-line}pre.numberSource code>span>a:first-child::before{content:counter(source-line);position:relative;left:-1em;text-align:right;vertical-align:baseline;border:none;display:inline-block;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:0 4px;width:4em;color:#aaa}pre.numberSource{margin-left:3em;border-left:1px solid #aaa;padding-left:4px}div.sourceCode{}@media screen{pre>code.sourceCode>span>a:first-child::before{text-decoration:underline}}code span.al{color:red;font-weight:700}code span.an{color:#60a0b0;font-weight:700;font-style:italic}code span.at{color:#7d9029}code span.bn{color:#40a070}code span.bu{}code span.cf{color:#007020;font-weight:700}code span.ch{color:#4070a0}code span.cn{color:#800}code span.co{color:#60a0b0;font-style:italic}code span.cv{color:#60a0b0;font-weight:700;font-style:italic}code span.do{color:#ba2121;font-style:italic}code span.dt{color:#902000}code span.dv{color:#40a070}code span.er{color:red;font-weight:700}code span.ex{}code span.fl{color:#40a070}code span.fu{color:#06287e}code span.im{color:#007020;font-weight:700}code span.in{color:#60a0b0;font-weight:700;font-style:italic}code span.kw{color:#007020;font-weight:700}code span.op{color:#666}code span.ot{color:#007020}code span.pp{color:#bc7a00}code span.sc{color:#4070a0}code span.ss{color:#b68}code span.st{color:#4070a0}code span.va{color:#19177c}code span.vs{color:#4070a0}code span.wa{color:#60a0b0;font-weight:700;font-style:italic}.display.math{display:block;text-align:center;margin:.5rem auto}div.csl-bib-body{}div.csl-entry{clear:both}.hanging div.csl-entry{margin-left:2em;text-indent:-2em}div.csl-left-margin{min-width:2em;float:left}div.csl-right-inline{margin-left:2em;padding-left:1em}div.csl-indent{margin-left:2em}#refs:before{content:"Bibliographie";display:block;font-size:3.6rem;font-weight:700;margin-top:2em;margin-bottom:1em;line-height:1.25;letter-spacing:-.1rem}#refs div.csl-entry:before{content:" ";margin-left:-31px;margin-right:7px;margin-bottom:-7px;display:inline-block;min-width:22px;min-height:22px;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAMAAADzapwJAAAAV1BMVEUAAAD///////8AAAAREREzMzM2NjZAQEBERERISEhYWFhhYWFra2tubm53d3d/f3+BgYGCgoKEhISIiIiioqKmpqbIyMjJycnh4eH7+/v9/f3+/v7////R794jAAAAA3RSTlMAwcJd/YFNAAAAaUlEQVR42s3PNxbCMBREUUkjMjiS+fvfpm3l3POqObcb1kxQiAem92ln2o+/4DTBdwtOPXDUSeCq3DPpDgAuXx6xGppx/vAa404ZP+Z5BvqM9YGcTX/LvoQ7X+ABSYPlp4xVvgwLyhKMrc4HEH42TbsdAAAAAElFTkSuQmCC)}#refs div.csl-entry{margin-top:1.5em;margin-bottom:1.5em;margin-left:40px;text-indent:0}</style>
+	 	 </head>
+  <body>
+        <div id="whole_page">   
+      <section class="content" id="main">
+	<header class="header">
+	  <h1>Estimer la consommation avec des sondes logicielles</h1>
+	</header>
+		<nav id="TOC">
+	  <div class="title">Menu</div>
+          <ul>
+<li><a href="#sec:rapl" id="toc-sec:rapl">RAPL</a></li>
+<li><a href="#sec:powerapi" id="toc-sec:powerapi">PowerAPI</a>
+<ul>
+<li><a href="#prérequis" id="toc-prérequis">Prérequis</a></li>
+<li><a href="#sec:hwpc" id="toc-sec:hwpc">Déployer le capteur
+HWPC</a></li>
+<li><a href="#sec:smartwatts" id="toc-sec:smartwatts">Déployer la
+formule SmartWatts</a></li>
+<li><a href="#mesure-de-la-consommation-pour-un-groupe-de-processus"
+id="toc-mesure-de-la-consommation-pour-un-groupe-de-processus">Mesure de
+la consommation pour un groupe de processus</a></li>
+<li><a href="#traitement-et-visualisation-des-données"
+id="toc-traitement-et-visualisation-des-données">Traitement et
+visualisation des données</a></li>
+</ul></li>
+<li><a href="#sec:pyjoules" id="toc-sec:pyjoules">PyJoules</a>
+<ul>
+<li><a href="#utilisation-de-pyjoules"
+id="toc-utilisation-de-pyjoules">Utilisation de PyJoules</a></li>
+<li><a href="#sec:pyjoules-usecase" id="toc-sec:pyjoules-usecase">Cas
+d’utilisation complet</a></li>
+</ul></li>
+<li><a href="#sec:codecarbon" id="toc-sec:codecarbon">CodeCarbon</a>
+<ul>
+<li><a href="#mesure-de-la-consommation-dénergie"
+id="toc-mesure-de-la-consommation-dénergie">Mesure de la consommation
+d’énergie</a></li>
+<li><a href="#évaluation-de-limpact-carbone"
+id="toc-évaluation-de-limpact-carbone">Évaluation de l’impact
+carbone</a></li>
+<li><a href="#utilisation-de-codecarbon"
+id="toc-utilisation-de-codecarbon">Utilisation de CodeCarbon</a></li>
+<li><a href="#exploitation-des-résultats"
+id="toc-exploitation-des-résultats">Exploitation des résultats</a></li>
+</ul></li>
+</ul>	    
+	</nav>
+		<div class="container">      
+<h1 id="sec:rapl">RAPL</h1>
+<p>La technologie RAPL (<em>Running Average Power Limit</em>) fournit un
+ensemble de compteurs donnant accès à des mesures de consommation
+énergétique et de puissance. Cette technologie s’appuie sur un ensemble
+de sondes matérielles et sur un modèle de puissance. Elle est exposée
+par les processeurs Intel à partir de la génération <em>Sandy
+Bridge</em>. Il est important également de noter que cette technologie
+doit avoir un accès direct aux compteurs, par le biais du noyau Linux,
+ce qui exclut de l’utiliser au sein d’une machine virtuelle.</p>
+<p>Pour savoir si son architecture est compatible avec ces contraintes,
+on peut tout d’abord inspecter les informations concernant le
+micro-processeur :</p>
+<pre class="console"><code>$ lscpu
+Architecture :                          x86_64
+Mode(s) opératoire(s) des processeurs : 32-bit, 64-bit
+Boutisme :                              Little Endian
+Address sizes:                          39 bits physical, 48 bits virtual
+Processeur(s) :                         4
+[...]
+Famille de processeur :                 6
+[...]</code></pre>
+<p>Ici, il s’agit donc d’un processeur de 6ème génération, autrement dit
+<em>Skylake</em>, famille ultérieure à <em>Sandy Bridge</em>. Pour en
+avoir le cœur net :</p>
+<pre class="console"><code>$ cat /sys/devices/cpu/caps/pmu_name
+skylake</code></pre>
+<p>Afin de bien comprendre comment les relevés des compteurs sont
+effectués, il faut avoir une idée du découpage logique des unités de
+consommation<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>. Le découpage s’effectue de la
+manière suivante :</p>
+<ul>
+<li>le niveau <em>package</em> correspond à la consommation totale de
+tout le bloc processeur, incluant les cœurs, le cache L3, le contrôleur
+de mémoire et le processeur graphique intégré (GPU, s’il y en a
+un) :</li>
+<li>le niveau <em>core</em> correspond à la consommation de l’ensemble
+des cœurs CPU ;</li>
+<li>le niveau <em>uncore</em> correspond à la consommation du processeur
+graphique intégré. On a donc <span class="math inline">\(C_{core} +
+C_{uncore} \geq C_{package}\)</span> ;</li>
+<li>le niveau <em>dram</em>, séparé du processeur.</li>
+</ul>
+<p>Le schema de la figure ci-dessous nous montre une vue synthétique du
+découpage logique des compteurs RAPL.</p>
+<div id="fig:rapl_domains" class="large-fig">
+<p><img
+src="img/tikz/953150b9fa34a4d54ff2aeef84e5d8f029f85687.svg" /></p>
+<p>Découpage logique des compteurs RAPL pour un processeur unique (à
+plusieurs cœurs).</p>
+</div>
+<p>Il existe plusieurs outils et bibliothèques capables de lire les
+compteurs RAPL sous Linux. En s’appuyant directement sur le noyau Linux,
+il est possible d’accéder à ces valeurs de trois manières différentes<a
+href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a> :</p>
+<ul>
+<li>en lisant les fichiers du dossier <code
+class="sourceCode bash"><span class="ex">/sys/class/powercap/intel-rapl/intel-rapl:0</span></code>
+en utilisant l’interface <code>powercap</code><a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.
+Cette interface ne requiert aucune permission spéciale et a été
+introduite dans la version 3.13 du noyau Linux ;</li>
+<li>en utilisant l’API <code>perf_event</code> (ou <code>perf</code>)<a
+href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a>. Cette API est un outil d’analyse de
+performance capable de remonter à l’utilisateur un grand nombre de
+métriques liées aux événements matériels sur une machine. Elle est
+disponible dans le noyau Linux depuis la version 2.6.31 et intègre les
+compteurs RAPL depuis la version 3.14. L’utilisation de
+<code>perf_event</code> nécessitera un accès superutilisateur. La liste
+de tous les événements disponibles peut être trouvée par
+<code>perf list</code> ou en consultant les fichiers du dosser
+<code>/sys/bus/event_source/devices/power/events/</code> ;</li>
+<li>en accédant directement aux MSR bruts. Les MSR (<em>Model Specific
+Registers</em>) correspondent aux registres de contrôle du jeu
+d’instructions x86 utilisé pour suivre l’exécution d’un programme, et
+faire de la mesure de performance. Le module <code>msr</code> (chargé
+avec <code>modprobe msr</code>) fournit une interface pour accéder aux
+MSR, situés dans <code>/dev/cpu/CPUNUM/msr</code> (<code>CPUNUM</code>
+étant ici le numéro du processeur, tel qu’il apparaît dans le fichier
+<code>/proc/cpuinfo</code>).</li>
+</ul>
+<blockquote>
+<p><strong>Note importante</strong> : Il semble que dans les versions la
+version 5.4.77 du noyau Linux, et plus précisément depuis le commit <a
+href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?h=v5.4.77&amp;id=19f6d91bdad42200aac557a683c17b1f65ee6c94">19f6d91bdad42200aac557a683c17b1f65ee6c94</a>
+(10 novembre 2020), l’accès aux fichiers de mesure d’énergie de powercap
+soit restreint aux utilisateurs privilégiés. L’explication est qu’un
+accès non restreint aux mesures d’énergie expose le système à des
+failles de sécurité. On pourra trouver des exemples d’exploitation
+possible dans un article récent publié dans à ASIA-CCS’21 <span
+class="citation" data-cites="Zhang21">(<a href="#ref-Zhang21"
+role="doc-biblioref">Zhang et al. 2021</a>)</span>, et qui démontre
+entre autres comment exploiter des signatures énergétiques afin de
+déterminer à quelles pages web un utilisateur accède.</p>
+<p>Il y a plusieurs manières de contourner cette restriction. La
+première est d’effectuer toutes les mesures de consommation en tant que
+superutilisateur, ce qui implique donc de lancer tous les scripts de
+mesure qui nécessitent un accès à l’interface powercap (par exemple ceux
+qui concernent <a href="#sec:pyjoules">PyJoules</a> ou <a
+href="#sec:codecarbon">CodeCarbon</a>) en tant que superutilisateur. Une
+autre manière de contourner cette restriction est d’outrepasser les
+mesures de sécurité imposées par le noyau en donnant à tous les
+utilisateurs les droits en lecture sur les fichiers <code
+class="console">/sys/class/powercap/intel-rapl</code> :</p>
+<pre class="console"><code>$ sudo chmod -R a+r /sys/class/powercap/intel-rapl</code></pre>
+</blockquote>
+<p>Par la suite, nous détaillerons essentiellement l’utilisation du
+<em>middleware</em> PowerAPI <span class="citation"
+data-cites="powerAPI">(<a href="#ref-powerAPI"
+role="doc-biblioref">INRIA 2020</a>)</span>, qui s’appuie entre autres
+sur les sondes RAPL, mais dont l’objectif, orthogonal, est de fournir un
+cadre permettant d’automatiser au niveau d’un cluster la mesure de
+consommation s’appuyant sur des sondes logicielles.</p>
+<h1 id="sec:powerapi">PowerAPI</h1>
+<p>Comme l’indique la page Web dédiée, PowerAPI <span class="citation"
+data-cites="powerAPI">(<a href="#ref-powerAPI"
+role="doc-biblioref">INRIA 2020</a>)</span> fournit des outils dédiés au
+déploiement de sondes de mesure de puissance au niveau logiciel. Ces
+sondes permettent d’évaluer la consommation électrique d’un nœud de
+calcul ou d’un processus en temps réel.</p>
+<p>L’architecture de PowerAPI est pensée pour découpler la partie mesure
+à proprement parler (réalisée à l’aide de sondes logicielles) de la
+partie agrégation des mesures pour calculer une estimation globale de la
+consommation. La partie mesure est réalisée par le déploiement de
+capteurs (<em>sensors</em>). Ces capteurs s’appuient sur les outils
+systèmes pour effectuer des mesures brutes de consommation, et peupler
+une base de données. Afin d’exploiter ces données, il faut déployer une
+formule (<em>formula</em>), qui se charge de récupérer les mesures
+brutes, de les agréger (par exemple s’il y a plusieurs capteurs), et de
+les transformer en estimations de consommation exploitables, dont elle
+peuplera une base de données de sortie.</p>
+<h3 id="prérequis">Prérequis</h3>
+<p>Avant même de déployer des sondes logicielles propulsées par
+PowerAPI, il est préférable d’avoir sous la main un Système de Gestion
+de Bases de Données installé et configuré pour pouvoir accueillir les
+données recueillies par les sondes. Par défaut, les différentes sondes
+et formules fournies par PowerAPI sont capables d’exporter les données
+dans une base MongoDB, ce qui reste une manière simple et efficace de
+stocker et d’exploiter les données exportées (un export sous forme de
+fichiers CSV est également possible). Pour un export MongoDB, il faut
+donc avoir une instance de ce Système de Gestion de Bases de Données
+déployée.</p>
+<p>On peut par exemple déployer cette instance localement en lançant le
+serveur de la manière suivante :</p>
+<pre class="console"><code>$ mongod --shardsvr --dbpath powerapi --port 27021</code></pre>
+<p>En outre, la plupart des capteurs et formules disponibles sur la page
+de PowerAPI sont fournis non seulement sous forme de code, mais
+également sous forme de conteneur Docker prêt à l’emploi. Ainsi,
+l’installation de Docker, même si elle n’est pas <em>strito sensu</em>
+nécessaire, facilite grandement le recueil des mesures.</p>
+<p>Enfin, le capteur HWPC fourni pour la mesure des indicateurs de
+performance s’appuie sur la technologie RAPL (voir <span
+class="citation" data-cites="sec:rapl">(<a href="#ref-sec:rapl"
+role="doc-biblioref"><strong>sec:rapl?</strong></a>)</span>), ce qui
+signifie que pour fonctionner, il a besoin d’être déployé sur une
+machine compatible avec cette technologie (processeur Intel à partir de
+la génération <em>Sandy Bridge</em>, accès direct aux compteurs, donc
+pas de machine virtuelle). En outre, pour effectuer ses relevés de
+consommation, ce capteur a besoin d’un accès privilégié à la machine
+hôte. Très concrètement, cela signifie que si on déploie ce capteur
+directement sur la machine hôte sans passer par Docker, il nous faudra
+un accès superutilisateur. Cela peut être contourné si l’on utilise la
+version Docker, qui peut avoir un accès privilégié au système hôte. Cela
+nécessitera bien entendu que l’utilisateur que l’on utilise soit bien
+autorisé à lancer des conteneurs docker avec l’option <code
+class="console">--priviledged</code>.</p>
+<h3 id="sec:hwpc">Déployer le capteur HWPC</h3>
+<p>L’un des capteurs fournis par PowerAPI est le capteur HWPC-Sensor
+(<em>Hardware Performance Counters Sensor</em>). Ce capteur s’appuie sur
+l’API <code>perf</code> que nous avons évoquée en <span class="citation"
+data-cites="sec:rapl">(<a href="#ref-sec:rapl"
+role="doc-biblioref"><strong>sec:rapl?</strong></a>)</span>.</p>
+<p>Le capteur peut être déployé en utilisant le conteneur Docker
+fourni :</p>
+<pre class="console"><code>$ docker run --net=host --privileged --name powerapi-sensor \
+           -v /sys:/sys -v /var/lib/docker/containers:/var/lib/docker/containers:ro \
+           -v /tmp/powerapi-sensor-reporting:/reporting \
+           powerapi/hwpc-sensor:latest \
+           -n $SENSOR_NAME \
+           -r &quot;mongodb&quot; -U $MONGO_ADDR -D $DB -C $COL \
+           -s &quot;rapl&quot; -o -e RAPL_ENERGY_PKG \
+           -s &quot;msr&quot; -e &quot;TSC&quot; -e &quot;APERF&quot; -e &quot;MPERF&quot; \
+           -c &quot;core&quot; -e &quot;CPU_CLK_THREAD_UNHALTED:REF_P&quot; \
+                     -e &quot;CPU_CLK_THREAD_UNHALTED:THREAD_P&quot; \
+                     -e &quot;LLC_MISSES&quot; -e &quot;INSTRUCTIONS_RETIRED&quot;</code></pre>
+<p>Ici, il faut remplacer les variables <code>SENSOR_NAME</code>,
+<code>MONGO_ADDR</code>, <code>DB</code> et <code>COL</code>,
+représentant respectivement le nom du capteur (qu’on peut choisir
+arbitrairement, mais unique pour une campagne de mesure), l’adresse de
+l’instance de MongoDB, le nom de la base de données dans laquelle
+exporter, et le nom de la collection Mongo utilisée, par les valeurs qui
+conviennent. Ainsi, par exemple :</p>
+<pre class="console"><code>SENSOR_NAME=&quot;hwpcSensor&quot;
+MONGO_ADDR=&quot;mongodb://127.0.0.1:27021&quot;
+DB=&quot;powerapi&quot;
+COL=&quot;hwpcMeasures&quot;</code></pre>
+<p>Le paramètre <code>-e</code> permet de spécifier la liste des
+événements que l’on souhaite mesurer. On doit spécifier un nom de groupe
+pour chaque groupe d’événements que l’on souhaite analyser : il s’agit
+du paramètre <code>-c</code>. La liste de événements à mesurer dépend de
+la formule qui sera utilisée pour calculer la consommation. Les
+paramètres donnés dans la commande ci-dessus sont ceux qui sont
+préconisés pour l’utilisation de la formule <em>SmartWatts</em>, que
+nous allons utiliser.</p>
+<p>Une fois que le capteur HWPC est lancé, on peut vérifier la collecte
+des données en se connectant à la base Mongo concernée.</p>
+<pre class="console"><code>$ mongo mongodb://localhost:27021
+MongoDB shell version v3.6.8
+connecting to: mongodb://localhost:27021
+[...]
+
+test@machine:27021 &gt;&gt;&gt; use powerapi
+switched to db powerapi
+powerapi@machine:27021 &gt;&gt;&gt; db.hwpcMeasures.find().pretty()
+{
+    &quot;_id&quot; : ObjectId(&quot;600bc903e0f2d02f11007902&quot;),
+    &quot;timestamp&quot; : ISODate(&quot;2021-01-23T06:58:11.134Z&quot;),
+    &quot;sensor&quot; : &quot;hwpcSensor&quot;,
+    &quot;target&quot; : &quot;all&quot;,
+    &quot;groups&quot; : {
+        &quot;rapl&quot; : {
+            &quot;0&quot; : {
+                &quot;3&quot; : {
+                    &quot;RAPL_ENERGY_PKG&quot; : 34340864,
+                    &quot;time_enabled&quot; : 1382541,
+                    &quot;time_running&quot; : 1382541
+                }
+            }
+        },
+        &quot;msr&quot; : {
+            &quot;0&quot; : {
+                &quot;3&quot; : {
+                    &quot;MPERF&quot; : 3257807,
+                    &quot;APERF&quot; : 1768703,
+                    &quot;TSC&quot; : 3281312,
+                    &quot;time_enabled&quot; : 1367132,
+                    &quot;time_running&quot; : 1367132
+                },
+                &quot;0&quot; : {
+                    &quot;MPERF&quot; : 3174711,
+                    &quot;APERF&quot; : 1721538,
+                    &quot;TSC&quot; : 3297630,
+                    &quot;time_enabled&quot; : 1373942,
+                    &quot;time_running&quot; : 1373942
+                },
+                &quot;1&quot; : {
+                    &quot;MPERF&quot; : 2109174,
+                    &quot;APERF&quot; : 1149755,
+                    &quot;TSC&quot; : 3298888,
+                    &quot;time_enabled&quot; : 1374444,
+                    &quot;time_running&quot; : 1374444
+                },
+                &quot;2&quot; : {
+                    &quot;MPERF&quot; : 3264342,
+                    &quot;APERF&quot; : 1771445,
+                    &quot;TSC&quot; : 3284442,
+                    &quot;time_enabled&quot; : 1368436,
+                    &quot;time_running&quot; : 1368436
+                }
+            }
+        }
+    }
+}
+[...]</code></pre>
+<p>L’examen de la collection nous montre que le capteur HWPC exporte ses
+données sous deux cibles (<code>target</code>) distinctes :
+<code>all</code> et <code>powerapi-sensor</code>. La cible
+<code>powerapi-sensor</code> contient le groupe <code>core</code> qui se
+focalise sur les événements paramétrés avec <code>-c core</code> lors du
+déploiement du capteur. La cible <code>all</code>, quant à elle, relève
+les événements liés aux groupes <code>msr</code> et
+<code>rapl</code>.</p>
+<p>Le groupe <code>rapl</code> a un statut spécial. Il permet de relever
+les événements liés à la consommation générale du processeur, en
+utilisant les sondes RAPL exposées par celui-ci. Selon l’architecture du
+processeur, les trois types d’événements suivants peuvent être
+disponibles :</p>
+<ul>
+<li><code>RAPL_ENERGY_PKG</code> : cet événement est dédié à la
+consommation de l’intégralité du socket CPU ;</li>
+<li><code>RAPL_ENERGY_DRAM</code> : cet événement est dédié à la
+consommation de la RAM ;</li>
+<li><code>RAPL_ENERGY_GPU</code> : cet événement est dédié au processeur
+graphique intégré.</li>
+</ul>
+<p>Sur ma machine, l’événement <code>RAPL_ENERGY_DRAM</code> n’est pas
+disponible, mais <code>RAPL_ENERGY_GPU</code> l’est.</p>
+<h3 id="sec:smartwatts">Déployer la formule SmartWatts</h3>
+<p>L’objectif d’une formule de calcul est de convertir les données
+brutes fournies par les capteurs RAPL en données énergétiques
+exploitables, c’est-à-dire des données de consommation exprimées en
+Watts. La formule de calcul va collecter les données issues des capteurs
+dans la base de données Mongo, et va stocker les données converties dans
+une autre base de données Mongo.</p>
+<p>Le site de PowerAPI <span class="citation" data-cites="powerAPI">(<a
+href="#ref-powerAPI" role="doc-biblioref">INRIA 2020</a>)</span> propose
+d’utilise la formule simple RAPL pour faire des relevés généraux de la
+consommation à l’échelle d’un processeur. Cette formule est présentée
+comme une formule de démonstration pour illustrer les capacités de
+PowerAPI. En production, il est plutôt conseillé d’utiliser la formule
+SmartWatts qui permet une mesure beaucoup plus fine de la consommation.
+Le fonctionnement de la formule s’appuie sur une calibration en ligne
+qui permet un ajustement en temps réel du modèle de consommation à la
+machine sur laquelle elle est déployée. Le principe de fonctionnement
+est décrit en détails dans l’article de Fieni <em>et al.</em> <span
+class="citation" data-cites="smartwatts">(<a href="#ref-smartwatts"
+role="doc-biblioref">Fieni, Rouvoy, and Seinturier 2020</a>)</span>.</p>
+<p>Concrètement, la formule SmartWatts<a href="#fn5"
+class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> se
+présente sous la forme d’un programme Python que l’on peut installer et
+lancer, mais elle existe également sous la forme d’un conteneur Docker
+que l’on peut lancer comme suit :</p>
+<pre class="console"><code>$ docker run -td --net=host --name powerapi-formula powerapi/smartwatts-formula \
+           -s \
+           --input mongodb --model HWPCReport \
+                           -u $MONGO_ADDR -d $INPUT_DB -c $INPUT_COL \
+           --output mongodb --name power --model PowerReport \
+                            -u $MONGO_ADDR -d $OUTPUT_DB -c $OUTPUT_COL \
+           --output mongodb --name formula --model FormulaReport \
+                            -u $MONGO_ADDR -d $OUTPUT_DB -c frep \
+           --formula smartwatts --cpu-ratio-base $BASE_CPU_RATIO \
+                                --cpu-ratio-min $MIN_CPU_RATIO \
+                                --cpu-ratio-max $MAX_CPU_RATIO \
+                                --cpu-error-threshold 2.0 \
+                                --dram-error-threshold 2.0 \
+                                --disable-dram-formula</code></pre>
+<p>Ici, il faut remplacer les variables respectives <code>INPUT_*</code>
+et <code>OUTPUT_*</code> par les informations concernant la connexion à
+la base de données d’entrée (données capteurs) et de sortie (écriture
+des données de consommation) de la formule SmartWatts. Ainsi par
+exemple :</p>
+<pre class="console"><code>MONGO_ADDR=&quot;mongodb://127.0.0.1:27021&quot;
+INPUT_DB=&quot;powerapi&quot;
+INPUT_COL=&quot;hwpcMeasures&quot;
+OUTPUT_DB=&quot;powerapi&quot;
+OUTPUT_COL=&quot;smartWattsValues&quot;</code></pre>
+<p>Il y a également trois nouveaux paramètres à configurer, les
+paramètres relatifs à la fréquence du processeur :</p>
+<ul>
+<li><code>$BASE_CPU_RATIO</code> est la fréquence nominale du
+processeur, divisée par 100 ;</li>
+<li><code>$MIN_CPU_RATIO</code> est la fréquence minimale du processeur,
+divisée par 100. Cette valeur peut être trouvée à l’aide de la commande
+<code>lscpu</code> (ligne <code>CPU min MHz</code>) ;</li>
+<li><code>$MAX_CPU_RATIO</code> est la fréquence maximale du processeur,
+divisée par 100. Cette valeur peut être trouvée à l’aide de la commande
+<code>lscpu</code> (ligne <code>CPU max MHz</code>).</li>
+</ul>
+<p>Une fois que la formule SmartWatts est déployée, on peut vérifier la
+collecte des données en se connectant à la base Mongo concernée.</p>
+<pre class="console"><code>$ mongo mongodb://localhost:27021
+MongoDB shell version v3.6.8
+connecting to: mongodb://localhost:27021
+[...]
+
+test@machine:27021 &gt;&gt;&gt; use powerapi
+switched to db powerapi
+powerapi@machine:27021 &gt;&gt;&gt; db.smartWattsValues.find().pretty()
+{
+    &quot;_id&quot; : ObjectId(&quot;600ef211804a0d545698ced4&quot;),
+    &quot;timestamp&quot; : ISODate(&quot;2021-01-25T16:29:57.533Z&quot;),
+    &quot;sensor&quot; : &quot;hwpcSensor&quot;,
+    &quot;target&quot; : &quot;rapl&quot;,
+    &quot;metadata&quot; : {
+        &quot;scope&quot; : &quot;cpu&quot;,
+        &quot;socket&quot; : &quot;0&quot;,
+        &quot;formula&quot; : &quot;RAPL_ENERGY_PKG&quot;,
+        &quot;ratio&quot; : 1,
+        &quot;predict&quot; : 0
+    },
+    &quot;power&quot; : 6.37811279296875,
+    &quot;socket&quot; : &quot;0&quot;
+}
+{
+    &quot;_id&quot; : ObjectId(&quot;600ef212804a0d545698ced5&quot;),
+    &quot;timestamp&quot; : ISODate(&quot;2021-01-25T16:29:58.534Z&quot;),
+    &quot;sensor&quot; : &quot;hwpcSensor&quot;,
+    &quot;target&quot; : &quot;rapl&quot;,
+    &quot;metadata&quot; : {
+        &quot;scope&quot; : &quot;cpu&quot;,
+        &quot;socket&quot; : &quot;0&quot;,
+        &quot;formula&quot; : &quot;RAPL_ENERGY_PKG&quot;,
+        &quot;ratio&quot; : 1,
+        &quot;predict&quot; : 0
+    },
+    &quot;power&quot; : 4.3121337890625,
+    &quot;socket&quot; : &quot;0&quot;
+}
+[...]</code></pre>
+<p>Ici, la valeur indiquée dans le champ <code>power</code>
+(<code>6.37811279296875</code> et <code>4.3121337890625</code> en
+l’occurrence) correspond à la valeur de consommation estimée par la
+formule, exprimée en watts.</p>
+<h3 id="mesure-de-la-consommation-pour-un-groupe-de-processus">Mesure de
+la consommation pour un groupe de processus</h3>
+<p>PowerAPI fournit également la possibilité de mesurer la consommation
+d’un processus unique ou d’un groupe de processus. Cela passe par
+l’utilisation des <code>cgroups</code><a href="#fn6"
+class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>,
+fonctionnalité incluse dans le noyau Linux depuis la version 2.6.24, et
+dont l’objectif est de mettre en place et de gérer des groupes de
+processus, dans le but de mesurer, limiter, ou contrôler l’accès à
+certaines ressources.</p>
+<p>Techniquement, le capteur HWPC est capable de monitorer la
+consommation de tous les groupes de processus rattachés au contrôleur
+<code>perf_event</code>, qui est l’un des contrôleurs présents par
+défaut<a href="#fn7" class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a>.</p>
+<p>La première étape pour cela est de créer un <em>groupe</em> de
+processus dont le contrôleur est <code>perf_event</code>. Cela peut se
+faire grâce à la commande (lancée en tant que superutilisateur) :</p>
+<pre class="console"><code># cgcreate -g perf_event:$GROUP</code></pre>
+<p>Ici, <code>$GROUP</code> est le nom du groupe de processus qui
+servira à identifier la consommation. Cette commande doit être exécutée
+en tant que superutilisateur.</p>
+<p>Ensuite, on peut rattacher tous les processus que l’on souhaite
+surveiller au groupe nouvellement créé.</p>
+<pre class="console"><code># cgclassify -g perf_event:$GROUP $(pidof $PROGRAM_NAME)</code></pre>
+<p>Ici, on rattache tous les processus qui se rattachent au nom de
+programme <code>$PROGRAM_NAME</code> au groupe <code>$GROUP</code>.</p>
+<p>Une fois cette classification accomplie, il faut, tout comme dans la
+<span class="citation" data-cites="sec:hwpc">(<a href="#ref-sec:hwpc"
+role="doc-biblioref"><strong>sec:hwpc?</strong></a>)</span>, déployer le
+capteur HWPC, puis la formule SmartWatts (voir <span class="citation"
+data-cites="sec:smartwatts">(<a href="#ref-sec:smartwatts"
+role="doc-biblioref"><strong>sec:smartwatts?</strong></a>)</span>) pour
+transformer les données brutes en mesures estimées de la consommation.
+Dans les données exportées par cette formule, on trouve désormais toutes
+les données concernant les groupes de processus que nous avons crées.
+Ainsi, par exemple, si nous créons le groupe <code>firefox</code> pour
+monitorer les données de consommation du navigateur, nous retrouvons
+dans notre collection Mongo un ensemble d’objets dont la cible
+(<code>target</code>) correspond à la valeur <code>/firefox</code> :</p>
+<pre class="console"><code>powerapi@machine:27021 &gt;&gt;&gt; db.smartWattsValues.find({&quot;target&quot;: &quot;/firefox&quot;}).pretty()
+{
+    &quot;_id&quot; : ObjectId(&quot;6012bdb89279bf32da7f4b00&quot;),
+    &quot;timestamp&quot; : ISODate(&quot;2021-01-28T13:35:46.670Z&quot;),
+    &quot;sensor&quot; : &quot;hwpcSensor&quot;,
+    &quot;target&quot; : &quot;/firefox&quot;,
+    &quot;metadata&quot; : {
+        &quot;scope&quot; : &quot;cpu&quot;,
+        &quot;socket&quot; : &quot;0&quot;,
+        &quot;formula&quot; : &quot;4f87dd0a3afd331acc89541f4cd46e856f119c59&quot;,
+        &quot;ratio&quot; : 0.20662675213078738,
+        &quot;predict&quot; : 1.835740527645692
+    },
+    &quot;power&quot; : 1.835740527645692,
+    &quot;socket&quot; : &quot;0&quot;
+}
+[...]</code></pre>
+<h3 id="traitement-et-visualisation-des-données">Traitement et
+visualisation des données</h3>
+<p>Il existe plusieurs possibilités pour traiter les données de
+consommation issues de PowerAPI. Une possibilité est d’utiliser un outil
+de visualisation tel que Grafana<a href="#fn8" class="footnote-ref"
+id="fnref8" role="doc-noteref"><sup>8</sup></a>, qui nécessitera un
+export des données dans une base de données temporelle InfluxDB<a
+href="#fn9" class="footnote-ref" id="fnref9"
+role="doc-noteref"><sup>9</sup></a>. Une autre possibilité est
+d’exporter les données dans un format utilisable facilement (CSV par
+exemple) afin de pouvoir l’exploiter dans un logiciel d’analyse. Là
+encore, il existe plusieurs possibilités : soit on peut directement
+exporter les données issues de la formule RAPL dans ce format, en
+paramétrant correctement la sortie du script de lancement ; soit on peut
+exporter ces données depuis la collection Mongo adéquate grâce à
+<code>mongoexport</code>. La commande suivante exporte toute les données
+de la collection <code>smartWattsValues</code> en se limitant aux champs
+<code>target</code>, <code>timestamp</code> et <code>power</code>, qui
+sont suffisants pour une analyse et une visualisation basiques.</p>
+<pre class="console"><code>$ mongoexport --uri &quot;mongodb://localhost:27021/powerapi&quot; \
+              --collection=smartWattsValues --type=csv \
+              --fields=target,timestamp,power --out=$OUTPUT_FILE</code></pre>
+<p>Il est ensuite possible d’exploiter ces données en utilisant les
+logiciels ou les bibliothèques adéquates. Voici un exemple de script
+Python permettant simplement de tracer le graphe de consommation en
+fonction du temps, en utilisant les bibliothèques <code>pandas</code>
+(pour la lecture du fichier CSV) et <code>matplotlib</code> (pour le
+tracé du graphe).</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dateutil.parser</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.dates <span class="im">as</span> mdates</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>MOVING_AVG_WINDOW <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>NB_X_TICKS <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>EXCLUDE_TARGETS <span class="op">=</span> {<span class="st">&#39;rapl&#39;</span>, <span class="st">&#39;powerapi-formula&#39;</span>, <span class="st">&#39;powerapi-sensor&#39;</span>}</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(sys.argv) <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    sys.stderr.write(<span class="ss">f&quot;Usage: </span><span class="sc">{</span>sys<span class="sc">.</span>argv[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> csv_file</span><span class="ch">\n</span><span class="ss">&quot;</span>)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    sys.exit(<span class="dv">1</span>)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co"># We read the CSV file</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(sys.argv[<span class="dv">1</span>])</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co"># We create the figure and configure the plot</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co"># We group the tuples by target</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>gb <span class="op">=</span> df.groupby(<span class="st">&#39;target&#39;</span>)</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="co"># We plot the graph for each group</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a rolling average to smooth the graph and better show trends</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, group <span class="kw">in</span> gb:</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> name <span class="kw">not</span> <span class="kw">in</span> EXCLUDE_TARGETS:</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>        ax.plot([dateutil.parser.isoparse(d) <span class="cf">for</span> d <span class="kw">in</span> group[<span class="st">&#39;timestamp&#39;</span>]],</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>                group[<span class="st">&#39;power&#39;</span>].rolling(MOVING_AVG_WINDOW).mean(), label<span class="op">=</span>name)</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we configure the plot</span></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>ax.grid(color<span class="op">=</span>(<span class="fl">0.9</span>, <span class="fl">0.9</span>, <span class="fl">0.9</span>))</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [dateutil.parser.isoparse(d) <span class="cf">for</span> d <span class="kw">in</span> df[<span class="st">&#39;timestamp&#39;</span>]]</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="co"># We show only NB_X_TICKS ticks on the x axis</span></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>    [x[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(x) <span class="op">//</span> NB_X_TICKS <span class="op">//</span> <span class="dv">2</span>, <span class="bu">len</span>(x), <span class="bu">len</span>(x) <span class="op">//</span> NB_X_TICKS)])</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a><span class="co"># We format the date</span></span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>ax.xaxis.set_major_formatter(mdates.DateFormatter(<span class="st">&#39;%H:%M:%S&#39;</span>))</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>fig.autofmt_xdate()</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="co"># We set the axes labels</span></span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">&quot;Temps&quot;</span>)</span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">&quot;Consommation (watts)&quot;</span>)</span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="co"># We position the legend</span></span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">&quot;upper left&quot;</span>, frameon<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a><span class="co"># We show the graph</span></span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<p>Ce script produit le graphe apparaissant dans la <span
+class="citation" data-cites="fig:powerapi-plot">(<a
+href="#ref-fig:powerapi-plot"
+role="doc-biblioref"><strong>fig:powerapi-plot?</strong></a>)</span>.
+Nous nous limitons à l’estimation de la consommation globale, et à deux
+groupes de processus créés au préalable avec <code>cgcreate</code> comme
+indiqué ci-dessus. La figure montre une moyenne glissante des données
+avec une fenêtre de 50 échantillons. Cela permet de mieux visualiser les
+tendances en lissant les variations locales, mais annule les valeurs
+extrêmes (ainsi, par exemple, dans les données d’entrée visualisées sur
+la figure, la valeur de consommation maximale est d’environ 58 W, ce qui
+ne transparaît pas du tout sur le graphe).</p>
+<figure id="fig:powerapi-plot">
+<img src="img/plot-powerapi.svg"
+alt="Visualisation des données de consommation sur un graphe en fonction du temps, en moyenne glissante de 50 échantillons." />
+<figcaption aria-hidden="true">Visualisation des données de consommation
+sur un graphe en fonction du temps, en moyenne glissante de 50
+échantillons.</figcaption>
+</figure>
+<h1 id="sec:pyjoules">PyJoules</h1>
+<p>Le <em>middleware</em> PowerAPI présenté dans la <span
+class="citation" data-cites="sec:powerapi">(<a href="#ref-sec:powerapi"
+role="doc-biblioref"><strong>sec:powerapi?</strong></a>)</span> est
+dédié essentiellement à la mesure de consommation énergétique à
+l’échelle d’un cluster. Le cas d’usage typique de PowerAPI est le suivi
+de consommation sur du long terme. Il n’a <em>a priori</em> pas été
+pensé pour faire de la mesure comparative de performances d’algorithmes
+ou de programmes.</p>
+<p>Si l’on souhaite effectuer des mesures comparatives de performance
+d’algorithmes, on peut utiliser la bibliothèque PyJoules<a href="#fn10"
+class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>.
+Il s’agit d’une bibliothèque Python qui s’appuie sur les compteurs RAPL
+(voir <span class="citation" data-cites="sec:rapl">(<a
+href="#ref-sec:rapl"
+role="doc-biblioref"><strong>sec:rapl?</strong></a>)</span>) pour
+mesurer l’empreinte énergétique d’une machine lors de l’exécution de
+portions de code Python. PyJoules est également capable de mesurer la
+consommation énergétique de certains processeurs graphiques NVidia, en
+s’appuyant sur la bibliothèque <em>Nvidia Management Library</em>.</p>
+<p>Il faut noter que PyJoules mesure la consommation d’énergie
+<strong>globale</strong> au niveau de tous les processus, et non au
+niveau du simple programme que l’on cherche à mesurer. C’est pourquoi il
+est important d’éliminer tous les programmes extérieurs lorsque l’on
+effectue le relevé, afin de minimiser les consommations additionnelles
+induites qui auraient pour effet de biaiser les mesures.</p>
+<h3 id="utilisation-de-pyjoules">Utilisation de PyJoules</h3>
+<p>La manière la plus simple d’utiliser PyJoules est d’équiper les
+fonctions dont on souhaite mesurer la consommation à l’aide du
+décorateur <code
+class="sourceCode python"><span class="at">@measure_energy</span></code></p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyJoules.energy_meter <span class="im">import</span> measure_energy</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="at">@measure_energy</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> python_sort(shuffled):</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    shuffled.sort()</span></code></pre></div>
+<p>Lorsque l’on le lance, le programme affiche une ligne de mesure pour
+chaque passage dans la fonction équipée du décorateur en question :</p>
+<pre class="console"><code>begin timestamp : 1612345928.8571808; tag : python_sort; duration : 0.0008618831634521484; package_0 : 7751.0; dram_0 : 610.0; core_0 : 3418.0; uncore_0 : 0.0</code></pre>
+<p>Ici, la durée est exprimée en secondes, et la consommation des
+différents domaines en microjoules (μJ).</p>
+<p>Le décorateur peut également être paramétré par :</p>
+<ul>
+<li>l’ensemble des différents domaines, parmi <code
+class="sourceCode python">pyJoules.device.rapl_device.RaplPackageDomain</code>,
+<code
+class="sourceCode python">pyJoules.device.rapl_device.RaplDramDomain</code>,
+<code
+class="sourceCode python">pyJoules.device.rapl_device.RaplUnCoreDomain</code>,
+<code
+class="sourceCode python">pyJoules.device.rapl_device.RaplCoreDomain</code>
+et <code
+class="sourceCode python">pyJoules.device.nvidia_device.NvidiaGPUDomain</code></li>
+<li>un gestionnaire (<em>handler</em>), qui permet de spécifier vers
+quelle sortie les données seront envoyées. Les gestionnaires disponibles
+sont :
+<ul>
+<li>la sortie standard (par défaut) ;</li>
+<li>le gestionnaire CSV (<code
+class="sourceCode python">pyJoules.handler.csv_handler.CSVHandler</code>)
+qui exporte les mesures sous la forme d’un fichier CSV ;</li>
+<li>le gestionnaire Pandas (<code
+class="sourceCode python">pyJoules.handler.pandas_handler.PandasHandler</code>)
+qui exporte les mesures sous la forme d’une variable de type <code
+class="sourceCode python">DataFrame</code> de la bibliothèque
+<code>pandas</code> ;</li>
+<li>le gestionnaire MongoDB (<code
+class="sourceCode python">pyJoules.handler.mongo_handler.MongoHandler</code>)
+qui exporte les données vers une collection Mongo.</li>
+</ul></li>
+</ul>
+<p>Outre l’utilisation d’un décorateur, il est également possible
+d’utiliser un gestionnaire de contexte (<em>ContextManager</em>) qui
+rend l’instrumentation du code plus souple :</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyJoules.energy_meter <span class="im">import</span> measure_energy</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="at">@measure_energy</span>(handler<span class="op">=</span>pandas_handler)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> numpy_sort(tab):</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> EnergyContext(handler<span class="op">=</span>pandas_handler, start_tag<span class="op">=</span><span class="st">&#39;Numpy create&#39;</span>) <span class="im">as</span> ctx:</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        array <span class="op">=</span> np.array(tab)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        ctx.record(tag<span class="op">=</span><span class="st">&#39;Numpy sort&#39;</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        np.sort(array)</span></code></pre></div>
+<p>Ainsi, par exemple, le code ci-dessus instrumente une partie du code
+de tri, en effectuant deux relevés : le premier correspond au code situé
+entre la création de l’objet <code
+class="sourceCode python">EnergyContext</code> et l’instruction <code
+class="sourceCode python">ctx.record()</code>, et le second entre cette
+instruction et la fin du gestionnaire de contexte.</p>
+<h3 id="sec:pyjoules-usecase">Cas d’utilisation complet</h3>
+<p>Nous allons dans cette section présenter un cas d’utilisation complet
+de mesure de consommation avec pyJoules. Nous nous fixons comme objectif
+de comparer différents algorithmes de tri à l’aune de leur consommation
+énergétique et d’afficher le résultat sous forme de graphique avec
+Matplotlib.</p>
+<p>Commençons par le préambule du programme, et quelques bibliothèques
+dont nous allons nous servir :</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/python3</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyJoules.energy_meter <span class="im">import</span> measure_energy, EnergyContext</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyJoules.handler.pandas_handler <span class="im">import</span> PandasHandler</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.cm <span class="im">as</span> cm</span></code></pre></div>
+<p>Pour le traitement des données, nous allons utiliser la bibliothèque
+Pandas, et le gestionnaire pyJoules qui lui est associé :</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pandas_handler <span class="op">=</span> PandasHandler()</span></code></pre></div>
+<h4 id="instrumentation-du-code-de-tri">Instrumentation du code de
+tri</h4>
+<p>La deuxième partie du programme est dédiée aux algorithmes de tri à
+proprement parler, instrumentés pour les relevés de consommation. Le tri
+par insertion :</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="at">@measure_energy</span>(handler<span class="op">=</span>pandas_handler)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> insertion_sort(tab):</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(tab)):</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        j <span class="op">=</span> i</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> tab[j <span class="op">-</span> <span class="dv">1</span>] <span class="op">&gt;</span> tab[j] <span class="kw">and</span> j <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>            tab[j <span class="op">-</span> <span class="dv">1</span>], tab[j] <span class="op">=</span> tab[j], tab[j <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>            j <span class="op">-=</span> <span class="dv">1</span></span></code></pre></div>
+<p>Le tri rapide (<em>quicksort</em>), avec un choix de pivot
+déterministe défini comme le premier élément du tableau à trier :</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> qsort(tab):</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> split(tab, first_idx, last_idx, pivot_idx):</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        tab[pivot_idx], tab[last_idx] <span class="op">=</span> tab[last_idx], tab[pivot_idx]</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        j <span class="op">=</span> first_idx</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(first_idx, last_idx):</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> tab[i] <span class="op">&lt;=</span> tab[last_idx]:</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>                tab[i], tab[j] <span class="op">=</span> tab[j], tab[i]</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>                j <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        tab[last_idx], tab[j] <span class="op">=</span> tab[j], tab[last_idx]</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> j</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> quick_sort(tab, first_idx, last_idx):</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> first_idx <span class="op">&lt;</span> last_idx:</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>            pivot_idx <span class="op">=</span> first_idx</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>            pivot_idx <span class="op">=</span> split(tab, first_idx, last_idx, pivot_idx)</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>            quick_sort(tab, first_idx, pivot_idx <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>            quick_sort(tab, pivot_idx <span class="op">+</span> <span class="dv">1</span>, last_idx)</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    quick_sort(tab, <span class="dv">0</span>, <span class="bu">len</span>(tab) <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>La fonction de tri par défaut de Python fondée sur l’algorithme
+TimSort :</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="at">@measure_energy</span>(handler<span class="op">=</span>pandas_handler)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> python_sort(tab):</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    tab.sort()</span></code></pre></div>
+<p>La fonction de tri par défaut de Numpy, fondée sur l’algorithme
+QuickSort. Ici, nous instrumentons à la fois la portion de code dédiée à
+l’exécution de l’algorithme lui-même, et la portion de code dédiée à la
+création du tableau Numpy à partir d’une liste Python :</p>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> numpy_sort(tab):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> EnergyContext(handler<span class="op">=</span>pandas_handler, start_tag<span class="op">=</span><span class="st">&#39;Numpy create&#39;</span>) <span class="im">as</span> ctx:</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        array <span class="op">=</span> np.array(tab)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        ctx.record(tag<span class="op">=</span><span class="st">&#39;Numpy sort&#39;</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        np.sort(array)</span></code></pre></div>
+<h4 id="traitement-des-données-pour-la-visualisation">Traitement des
+données pour la visualisation</h4>
+<p>La troisième partie du programme est dédiée au traitement des données
+exportées par pyJoules sous la forme d’un objet <code>DataFrame</code>
+de la bibliothèque Pandas. Nous commençons par utiliser cette
+bibliothèque pour calculer un regroupement des données par compteur
+(<code>tag</code>), et calculer la moyenne et l’écart-type pour chaque
+groupe, en effectuant une agrégation.</p>
+<p>Le code restant est dédié au tracé du diagramme à barres, équipé des
+marges d’erreur pour chaque classe du diagramme.</p>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_data(df):</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We group the tuples by algorithm and compute the means and standard deviations</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    aggregate <span class="op">=</span> df.groupby(<span class="st">&#39;tag&#39;</span>).agg([np.mean, np.<span class="bu">min</span>, np.<span class="bu">max</span>])</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We get the list of domains (package, dram,...) and the list of algorithms tested</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    domains <span class="op">=</span> [<span class="st">&#39;core_0&#39;</span>, <span class="st">&#39;uncore_0&#39;</span>, <span class="st">&#39;package_0&#39;</span>, <span class="st">&#39;dram_0&#39;</span>]</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    algos <span class="op">=</span> aggregate.head().index.values</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">len</span>(algos)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    M <span class="op">=</span> <span class="bu">len</span>(domains)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    means <span class="op">=</span> [[aggregate[domain][<span class="st">&#39;mean&#39;</span>][algo] <span class="op">/</span> <span class="dv">1000000</span> <span class="cf">for</span> algo <span class="kw">in</span> algos]</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>             <span class="cf">for</span> domain <span class="kw">in</span> domains]</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    mins <span class="op">=</span> [[aggregate[domain][<span class="st">&#39;amin&#39;</span>][algo] <span class="op">/</span> <span class="dv">1000000</span> <span class="cf">for</span> algo <span class="kw">in</span> algos]</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> domain <span class="kw">in</span> domains]</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    maxs <span class="op">=</span> [[aggregate[domain][<span class="st">&#39;amax&#39;</span>][algo] <span class="op">/</span> <span class="dv">1000000</span> <span class="cf">for</span> algo <span class="kw">in</span> algos]</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> domain <span class="kw">in</span> domains]</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    ind <span class="op">=</span> np.arange(N)</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We configure the bar chart</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>    bar_width <span class="op">=</span> <span class="fl">0.15</span>  <span class="co"># bar width</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>    bar_sep <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>    total_width <span class="op">=</span> (M <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> (bar_width <span class="op">+</span> bar_sep)</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>    unit_offset <span class="op">=</span> total_width <span class="op">/</span> (M <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> offset(i):</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="op">-</span> total_width <span class="op">/</span> <span class="dv">2</span> <span class="op">+</span> i <span class="op">*</span> unit_offset <span class="op">+</span> unit_offset <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>    colors <span class="op">=</span> cm.get_cmap(<span class="st">&#39;Paired&#39;</span>)  <span class="co"># color sheme</span></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure()</span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>)</span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We draw the bar charts with error bars</span></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>    bars <span class="op">=</span> [<span class="va">None</span>] <span class="op">*</span> M</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(M <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>        bars[i] <span class="op">=</span> ax.bar(ind <span class="op">+</span> offset(i), means[i], bar_width, color<span class="op">=</span>colors(<span class="dv">2</span><span class="op">*</span>i))</span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>        ax.errorbar(ind <span class="op">+</span> offset(i), means[i], yerr<span class="op">=</span>[mins[i], maxs[i]],</span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>                    fmt<span class="op">=</span><span class="st">&#39;o&#39;</span>, markersize<span class="op">=</span><span class="dv">4</span>, capsize<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>                    color<span class="op">=</span>colors(<span class="dv">2</span><span class="op">*</span>i <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a>    bars[M <span class="op">-</span> <span class="dv">1</span>] <span class="op">=</span> ax.bar(ind <span class="op">+</span> offset(M <span class="op">-</span> <span class="dv">2</span>), means[M <span class="op">-</span> <span class="dv">1</span>], bar_width, bottom<span class="op">=</span>means[M <span class="op">-</span> <span class="dv">2</span>],</span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>                         color<span class="op">=</span>colors(<span class="dv">2</span><span class="op">*</span>M <span class="op">-</span> <span class="dv">2</span>))</span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>    ax.errorbar(ind <span class="op">+</span> offset(M <span class="op">-</span> <span class="dv">2</span>) <span class="op">+</span> <span class="fl">0.05</span>, np.array(means[M <span class="op">-</span> <span class="dv">1</span>]) <span class="op">+</span> means[M <span class="op">-</span> <span class="dv">2</span>],</span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a>                yerr<span class="op">=</span>[mins[M <span class="op">-</span> <span class="dv">1</span>], maxs[M <span class="op">-</span> <span class="dv">1</span>]],</span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>                fmt<span class="op">=</span><span class="st">&#39;o&#39;</span>, markersize<span class="op">=</span><span class="dv">4</span>, capsize<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span>colors(<span class="dv">2</span><span class="op">*</span>M <span class="op">-</span> <span class="dv">1</span>))</span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We configure the axes and legend</span></span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a>    ax.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.grid(color<span class="op">=</span>(<span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.8</span>), linestyle<span class="op">=</span><span class="st">&#39;dashed&#39;</span>)</span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">&#39;Consommation moyenne (joules, échelle logarithmique)&#39;</span>)</span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a>    plt.yscale(<span class="st">&#39;log&#39;</span>)</span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">&#39;Algorithme&#39;</span>)</span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>    plt.xticks(ind, algos)</span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a>    ax.legend([bar[<span class="dv">0</span>] <span class="cf">for</span> bar <span class="kw">in</span> bars], domains)</span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div>
+<h4 id="script-de-lancement-des-tests">Script de lancement des
+tests</h4>
+<p>Enfin, la dernière partie du programme est dédiée au lancement des
+tests à proprement parler. Nous pouvons paramétrer à la ligne de
+commande la taille des listes à trier, ainsi que le nombre d’exécutions
+de chaque algorithme de tri. La liste à trier est une permutation
+aléatoire de l’intervalle d’entiers <span class="math inline">\(\{ 0,
+..., N-1 \}\)</span>, où <span class="math inline">\(N\)</span> est
+initialisé grâce à la ligne de commande.</p>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_sort(tab, sort_func, nb_tries):</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(nb_tries):</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        cpy <span class="op">=</span> tab.copy()</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>        sort_func(cpy)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(sys.argv) <span class="op">&lt;</span> <span class="dv">3</span>:</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>        sys.stderr.write(<span class="ss">f&quot;Usage: </span><span class="sc">{</span>sys<span class="sc">.</span>argv[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> size_list nb_tries</span><span class="ch">\n</span><span class="ss">&quot;</span>)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>        sys.exit(<span class="dv">1</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    size_list, nb_tries <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, sys.argv[<span class="dv">1</span>:<span class="dv">3</span>])</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    shuffled <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(size_list))</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    random.seed(<span class="dv">123456789</span>)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    tested_algorithms <span class="op">=</span> [insertion_sort, qsort, python_sort, numpy_sort]</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> algo <span class="kw">in</span> tested_algorithms:</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>        random.shuffle(shuffled)</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>        test_sort(shuffled, algo, nb_tries)</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pandas_handler.get_dataframe()</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    process_data(df)</span></code></pre></div>
+<p>La <span class="citation" data-cites="fig:sort01-plot">(<a
+href="#ref-fig:sort01-plot"
+role="doc-biblioref"><strong>fig:sort01-plot?</strong></a>)</span>
+montre le résultat de l’exécution de ce script sur des listes de 10000
+éléments, chaque algorithme étant exécuté 10 fois. Les domaines
+<code>core_0</code> et <code>uncore_0</code> étant des sous-domaines du
+domaine <code>package_0</code>, l’invariant
+<code>core_0 + uncore_0 &lt;= package_0</code> est censé être vérifié
+pour chaque algorithme. En pratique, les incertitudes de mesures font
+qu’il ne l’est pas toujours. Dans la figure, la barre empilée
+<code>package_0 + dram_0</code> montre la consommation totale des
+domaines mesurés par pyJoules (voir <span class="citation"
+data-cites="fig:rapl_domains">(<a href="#ref-fig:rapl_domains"
+role="doc-biblioref"><strong>fig:rapl_domains?</strong></a>)</span> pour
+un rappel sur le périmètre englobé par chaque domaine). En pratique,
+dans ce cas de figure, on peut voir que la consommation du domaine
+<code>dram_0</code> est faible par rapport aux autres consommations.</p>
+<p>D’après la <span class="citation" data-cites="fig:sort01-plot">(<a
+href="#ref-fig:sort01-plot"
+role="doc-biblioref"><strong>fig:sort01-plot?</strong></a>)</span>, on
+peut constater qu’il y a presque 4 ordres de grandeur entre l’algorithme
+le moins efficace énergétiquement (tri par insertion codé manuellement)
+et l’algorithme le plus efficace (<em>quicksort</em> Numpy).</p>
+<p>Enfin, afin de donner un ordre de grandeur, la consommation
+énergétique engendrée par le tri par insertion tourne en moyenne autour
+de 55 joules, ce qui revient approximativement à 0,015 wattheures. À
+titre de comparaison, la consommation énergétique engendrée par le tri
+Numpy de 1000000 de valeurs (soit 100 fois plus) tourne en moyenne
+autour de 0,7 J (0,00019 Wh) pour la création du tableau Numpy et 1,3 J
+(0,000361 Wh) pour le tri en lui-même.</p>
+<p>Bien entendu, toutes ces valeurs ne sont qu’approximatives, étant
+donné que la mesure a été faite dans un environnement où d’autres
+processus s’exécutaient en parallèle (en particulier l’environnement
+graphique de bureau).</p>
+<figure id="fig:sort01-plot">
+<img src="img/sort_01.svg"
+alt="Comparaison des données de consommation pour quatre algorithmes de tri, en fonction des domaines considérés. Moyenne sur 10 exécutions, sur des listes de 10000 éléments." />
+<figcaption aria-hidden="true">Comparaison des données de consommation
+pour quatre algorithmes de tri, en fonction des domaines considérés.
+Moyenne sur 10 exécutions, sur des listes de 10000
+éléments.</figcaption>
+</figure>
+<p>Nous pouvons par curiosité refaire les mêmes analyses sur des listes
+déjà triées. La <span class="citation"
+data-cites="fig:sort01-plot-sorted">(<a
+href="#ref-fig:sort01-plot-sorted"
+role="doc-biblioref"><strong>fig:sort01-plot-sorted?</strong></a>)</span>
+montre que les résultats sont très différents. La forte empreinte
+énergétique de l’algorithme quicksort codé en Python s’explique très
+probablement par le fait que le choix déterministe du pivot, fixé au
+premier élément du tableau, impose dans ce cas une profondeur de
+récursion linéaire (il faut d’ailleurs augmenter la taille de la pile
+Python car dans le cas de 10000 éléments, elle est par défaut
+insuffisante).</p>
+<figure id="fig:sort01-plot-sorted">
+<img src="img/sort_01_sorted.svg"
+alt="Comparaison des données de consommation pour quatre algorithmes de tri, en fonction des domaines considérés. Moyenne sur 10 exécutions, sur des listes déjà triées de 10000 éléments." />
+<figcaption aria-hidden="true">Comparaison des données de consommation
+pour quatre algorithmes de tri, en fonction des domaines considérés.
+Moyenne sur 10 exécutions, sur des listes déjà triées de 10000
+éléments.</figcaption>
+</figure>
+<h1 id="sec:codecarbon">CodeCarbon</h1>
+<p>CodeCarbon <span class="citation" data-cites="codecarbon">(<a
+href="#ref-codecarbon" role="doc-biblioref">Schmidt et al.
+2021</a>)</span> est une bibliothèque Python sous licence MIT développée
+par un collectif de <em>data scientists</em>. L’objectif de cette
+bibliothèque est de fournir un outil permettant d’estimer très
+simplement l’impact carbone de l’exécution d’une portion de code. Même
+si la page Web de CodeCarbon<a href="#fn11" class="footnote-ref"
+id="fnref11" role="doc-noteref"><sup>11</sup></a> met en avant
+l’utilisation de cette bibliothèque pour l’évaluation d’impact
+d’algorithmes d’apprentissage machine, elle peut être utilisée avec
+n’importe quel code Python, de la même manière que PyJoules (cf <span
+class="citation" data-cites="sec:pyjoules">(<a href="#ref-sec:pyjoules"
+role="doc-biblioref"><strong>sec:pyjoules?</strong></a>)</span>).</p>
+<p>Afin de calculer l’impact carbone d’un calcul, CodeCarbon a besoin de
+deux éléments :</p>
+<ol type="1">
+<li>un système de mesure de consommation d’énergie sur le système
+hôte ;</li>
+<li>une formule de conversion de l’énergie consommée (en J ou Wh) en
+équivalent CO2.</li>
+</ol>
+<h3 id="mesure-de-la-consommation-dénergie">Mesure de la consommation
+d’énergie</h3>
+<p>Afin de pouvoir évaluer l’énergie consommée par le programme,
+CodeCarbon va s’appuyer sur <em>Intel Power Gadget</em> sous Windows et
+Mac, et sur le système RAPL (voir <span class="citation"
+data-cites="sec:rapl">(<a href="#ref-sec:rapl"
+role="doc-biblioref"><strong>sec:rapl?</strong></a>)</span>) sous Linux,
+ce qui nécessite donc un accès aux fichiers de <code
+class="console">/sys/class/powercap/intel-rapl</code>, tout comme pour
+PyJoules − CodeCarbon accède notamment aux fichiers <code
+class="console">energy_uj</code> qui contiennent la valeur de
+consommation cumulée en µJoules. Si jamais CodeCarbon ne parvient pas à
+accéder à ces sondes logicielles, la bibliothèque utilisera une
+stratégie de repli pour évaluer la consommation, à savoir s’appuyer sur
+le <em>thermal design power</em> (TDP) du CPU hôte. CodeCarbon s’appuie
+pour cela sur une liste de données de plusieurs centaines de CPU AMD et
+Intel. Si CodeCarbon ne parvient pas à trouver le CPU hôte dans cette
+liste, il suppose une valeur par défaut à 85W. Dans tous les cas,
+CodeCarbon suppose que le CPU fonction à 50% de son TDP.</p>
+<h3 id="évaluation-de-limpact-carbone">Évaluation de l’impact
+carbone</h3>
+<p>Afin de pouvoir calculer l’impact carbone d’un calcul, CodeCarbon
+transforme la quantité d’énergie électrique consommée en un équivalent
+CO2. Pour ce faire, la bibliothèque estime l’intensité carbone du
+système de production électrique du pays dans lequel a lieu le calcul en
+s’appuyant sur une base de données recensant le mix électrique pour la
+plupart des pays du monde. Ce mix électrique est réparti en quatre
+sources :</p>
+<ol type="1">
+<li>charbon ;</li>
+<li>pétrole ;</li>
+<li>gaz naturel ;</li>
+<li>autre source à faible impact carbone (hydroélectricité, solaire,
+éolien, nucléaire…)</li>
+</ol>
+<p>Pour chacune de ces sources, un coefficient d’intensité carbone est
+utilisé. L’intensité carbone est donc simplement calculée comme une
+somme de ces coefficients d’intensité pondérée par les pourcentages de
+chaque source dans le mix énergétique du pays. À noter toutefois que ces
+coefficients d’intensité ne prennent en compte que les émissions durant
+la phase de génération, et donc sont légèrement sous-estimées. En
+particulier, pour les sources de type 4 (autre), le coefficient
+d’intensité est considéré comme étant égal à 0.</p>
+<h3 id="utilisation-de-codecarbon">Utilisation de CodeCarbon</h3>
+<p>L’utilisation de CodeCarbon est très similaire à celle de PyJoules.
+On peut par exemple instrumenter une fonction Python grâce à
+l’utilisation d’un décorateur :</p>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> codecarbon <span class="im">import</span> track_emissions</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="at">@track_emissions</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> python_sort(tab):</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    tab.sort()</span></code></pre></div>
+<p>Ce décorateur par défaut nécessite un accès Internet afin de
+déterminer la localisation de la machine sur laquelle est lancée le
+calcul. Si l’on ne souhaite pas utiliser cette fonctionnalité de
+détection (ou que le calcul est lancé hors-ligne), il faut utiliser le
+paramètre <code>offline=True</code> et préciser en même temps le pays
+dans lequel le calcul se déroule :</p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> codecarbon <span class="im">import</span> track_emissions</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="at">@track_emissions</span>(offline<span class="op">=</span><span class="va">True</span>, country_iso_code<span class="op">=</span><span class="st">&quot;FRA&quot;</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> python_sort(tab):</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    tab.sort()</span></code></pre></div>
+<p>Une autre manière de procéder, sans passer par le décorateur, est
+d’instancier directement un objet de type <code
+class="sourceCode python">EmissionsTracker</code> ou <code
+class="sourceCode python">OfflineEmissionsTracker</code> et de le lancer
+manuellement :</p>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> codecarbon <span class="im">import</span> EmissionsTracker</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> python_sort(tab):</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    tracker <span class="op">=</span> EmissionsTracker()</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    tracker.start()</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    tab.sort()</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    tracker.stop()</span></code></pre></div>
+<p>La liste de tous les paramètres pouvant être passés à ces objets est
+détaillée sur <a
+href="https://mlco2.github.io/codecarbon/parameters.html">la page de
+documentation</a>.</p>
+<h3 id="exploitation-des-résultats">Exploitation des résultats</h3>
+<p>Une fois le calcul terminé, CodeCarbon stocke les résultats dans un
+fichier CSV (par défaut <code class="console">emissions.csv</code>) qui
+contient une ligne de données par projet. Un projet peut être défini
+simplement en fixant la valeur du paramètre <code
+class="sourceCode python">project_name</code> à l’instanciation du
+décorateur ou de l’objet <code
+class="sourceCode python">EmissionsTracker</code>. Fixer ce paramètre
+permet de recenser plusieurs valeurs différentes pour différents
+endroits du code.</p>
+<p>Il faut noter que CodeCarbon ne stocke qu’une seule valeur par
+projet, bien qu’il soit possible de régler la fréquence avec laquelle la
+bibliothèque effectue ses mesures de consommation (avec le paramètre
+<code class="sourceCode python">measure_power_secs</code>). Étant donné
+que CodeCarbon lit les valeurs des sondes RAPL en quantité d’énergie (en
+microjoules), et non en puissance, et que CodeCarbon ne fournit pas de
+relevés instantanés de consommation énergétique pour observer une
+évolution dans le temps, l’utilité de ce paramètre <code
+class="sourceCode python">measure_power_secs</code> ne semble pas
+extrêmement claire.</p>
+<p>Voici un exemple de fichier de sortie produit par CodeCarbon sur
+l’exemple du tri déjà utilisé pour PyJoules (voir <span class="citation"
+data-cites="sec:pyjoules-usecase">(<a href="#ref-sec:pyjoules-usecase"
+role="doc-biblioref"><strong>sec:pyjoules-usecase?</strong></a>)</span>) :</p>
+<pre class="csv"><code>To Do</code></pre>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="list">
+<div id="ref-smartwatts" class="csl-entry" role="listitem">
+Fieni, Guillaume, Romain Rouvoy, and Lionel Seinturier. 2020.
+<span>“<span class="nocase">SmartWatts: Self-Calibrating
+Software-Defined Power Meter for Containers</span>.”</span> In <em><span
+class="nocase">CCGRID 2020 - 20th IEEE/ACM International Symposium on
+Cluster, Cloud and Internet Computing</span></em>. <a
+href="https://doi.org/10.1109/CCGrid49817.2020.00-45">https://doi.org/10.1109/CCGrid49817.2020.00-45</a>.
+</div>
+<div id="ref-powerAPI" class="csl-entry" role="listitem">
+INRIA, University of Lille. 2020. <span>“PowerAPI.”</span> 2020. <a
+href="http://powerapi.org/">http://powerapi.org/</a>.
+</div>
+<div id="ref-codecarbon" class="csl-entry" role="listitem">
+Schmidt, Victor, Kamal Goyal, Aditya Joshi, Boris Feld, Liam Conell,
+Nikolas Laskaris, Doug Blank, Jonathan Wilson, Sorelle Friedler, and
+Sasha Luccioni. 2021. <span>“<span class="nocase">CodeCarbon: Estimate
+and Track Carbon Emissions from Machine Learning
+Computing</span>.”</span> <a
+href="https://doi.org/10.5281/zenodo.4658424">https://doi.org/10.5281/zenodo.4658424</a>.
+</div>
+<div id="ref-Zhang21" class="csl-entry" role="listitem">
+Zhang, Zhenkai, Sisheng Liang, Fan Yao, and Xing Gao. 2021. <span>“Red
+Alert for Power Leakage: Exploiting Intel RAPL-Induced Side
+Channels.”</span> In <em><span>ASIA</span> <span>CCS</span> ’21:
+<span>ACM</span> Asia Conference on Computer and Communications
+Security, Virtual Event, Hong Kong, June 7-11, 2021</em>, edited by
+Jiannong Cao, Man Ho Au, Zhiqiang Lin, and Moti Yung, 162–75.
+<span>ACM</span>. <a
+href="https://doi.org/10.1145/3433210.3437517">https://doi.org/10.1145/3433210.3437517</a>.
+</div>
+</div>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>On peut par exemple trouver quelques explications par
+sur le blog de Chi (<a
+href="https://blog.chih.me/read-cpu-power-with-RAPL.html"
+class="uri">https://blog.chih.me/read-cpu-power-with-RAPL.html</a>), ou
+encore sur la page de pyJoules (<a
+href="https://pyjoules.readthedocs.io/en/latest/devices/intel_cpu.html#domains"
+class="uri">https://pyjoules.readthedocs.io/en/latest/devices/intel_cpu.html#domains</a>).<a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Voir la page de Vince Weaver pour plus d’informations
+sur la question : <a
+href="http://web.eece.maine.edu/~vweaver/projects/rapl/index.html"
+class="uri">http://web.eece.maine.edu/~vweaver/projects/rapl/index.html</a><a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://github.com/powercap/powercap"
+class="uri">https://github.com/powercap/powercap</a><a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://perf.wiki.kernel.org/"
+class="uri">https://perf.wiki.kernel.org/</a><a href="#fnref4"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://powerapi-ng.github.io/smartwatts.html"
+class="uri">https://powerapi-ng.github.io/smartwatts.html</a><a
+href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a
+href="https://www.kernel.org/doc/Documentation/cgroup-v1/"
+class="uri">https://www.kernel.org/doc/Documentation/cgroup-v1/</a><a
+href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Pour vérifier qu’il est bien présent, <code
+class="console">cat /proc/cgroups | grep perf_event</code><a
+href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p><a href="https://grafana.com/"
+class="uri">https://grafana.com/</a><a href="#fnref8"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p><a href="https://www.influxdata.com/"
+class="uri">https://www.influxdata.com/</a><a href="#fnref9"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p><a href="https://github.com/powerapi-ng/pyJoules"
+class="uri">https://github.com/powerapi-ng/pyJoules</a><a
+href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><a href="https://github.com/mlco2/codecarbon"
+class="uri">https://github.com/mlco2/codecarbon</a><a href="#fnref11"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+	</div>
+      </section>
+    </div>  
+    
+      </body>
+</html>
