@@ -5,7 +5,7 @@ date: 2021-04-28 19:30:00 -0500
 permalink: /
 ---
 
-| [Main](./index)| [EJCP2024](./ejcp2024)| [Édition précédente (2022)](./ejcp2022) | [About](./about) | [Contact](./contact) |
+| [Main](./index)| [EJCP2024](./ejcp2024)| [Édition précédente (2023)](./ejcp2023) | [About](./about) | [Contact](./contact) |
 
 
 ## Bienvenue
