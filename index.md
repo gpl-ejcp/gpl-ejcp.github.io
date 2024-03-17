@@ -8,13 +8,13 @@ permalink: /
 | [Main](./index)| [EJCP2024](./ejcp2024)| [Édition précédente (2023)](./ejcp2023) | [About](./about) | [Contact](./contact) |
 
 
-## Bienvenue
+## Bienvenue 
 
 L'école a pour objectif de rassembler les jeunes chercheur·se·s dans les thématiques logicielles, en première ou deuxième année de thèse, pendant une semaine à deux semaines. C'est l'occasion de découvrir un ensemble de thèmes de recherche de la communauté du logiciel, domaine vaste jamais abordé dans un unique master. Les intervenant·e·s réalisent des cours et des travaux pratiques variés et de grande qualité.
 
 ### Organisation
 
-L'école est organisée chaque année par une équipe/ville différente. Les intervenant·e·s sont choisi·e·s dans la communauté francophone [GPL](https://gdr-gpl.cnrs.fr/), en collaboration entre l'équipe locale et la direction de l'EJCP.
+L'école est organisée chaque année par une équipe/ville différente **cette année 2024 Perpignan & Toulouse** . Les intervenant·e·s sont choisi·e·s dans la communauté francophone [GPL](https://gdr-gpl.cnrs.fr/), en collaboration entre l'équipe locale et la direction de l'EJCP.
 
 
 ### Dernières éditions
