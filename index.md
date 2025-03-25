@@ -5,7 +5,7 @@ date: 2025-03-25
 permalink: /
 ---
 
-| [Main](./index)| [EJCP2024](./ejcp2025)| [Édition précédente (2024)](./ejcp2024) | [About](./about) | [Contact](./contact) |
+| [Main](./index)| [EJCP2025](./ejcp2025)| [Édition précédente (2024)](./ejcp2024) | [About](./about) | [Contact](./contact) |
 
 
 ## Bienvenue 
@@ -19,7 +19,7 @@ L'école est organisée chaque année par une équipe/ville différente **cette 
 
 ### Dernières éditions
 
-* 2024 : édition en présentiel à Vannes.
+* 2025 : édition en présentiel à Vannes.
 * 2024 : édition en présentiel à Argelès-sur-Mer (Pyrénées Orientales) du 17 au 21 juin [EJCP24](./ejcp2024)
 * 2023 : édition en présentiel à Valence (Drôme) début juillet 2023. [EJCP23](./ejcp2023)
 * 2022 : édition distancielle, début juillet 2022. [EJCP22](./ejcp2022)
