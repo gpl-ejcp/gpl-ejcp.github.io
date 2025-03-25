@@ -1,11 +1,11 @@
 ---
 layout: default
 title: "Index page"
-date: 2021-04-28 19:30:00 -0500
+date: 2025-03-25
 permalink: /
 ---
 
-| [Main](./index)| [EJCP2024](./ejcp2024)| [Édition précédente (2023)](./ejcp2023) | [About](./about) | [Contact](./contact) |
+| [Main](./index)| [EJCP2024](./ejcp2025)| [Édition précédente (2024)](./ejcp2024) | [About](./about) | [Contact](./contact) |
 
 
 ## Bienvenue 
@@ -14,11 +14,12 @@ L'école a pour objectif de rassembler les jeunes chercheur·se·s dans les thé
 
 ### Organisation
 
-L'école est organisée chaque année par une équipe/ville différente **cette année 2024 Perpignan & Toulouse** . Les intervenant·e·s sont choisi·e·s dans la communauté francophone [GPL](https://gdr-gpl.cnrs.fr/), en collaboration entre l'équipe locale et la direction de l'EJCP.
+L'école est organisée chaque année par une équipe/ville différente **cette année 2025 Rennes  & Vannes** . Les intervenant·e·s sont choisi·e·s dans la communauté francophone [GPL](https://gdr-gpl.cnrs.fr/), en collaboration entre l'équipe locale et la direction de l'EJCP.
 
 
 ### Dernières éditions
 
+* 2024 : édition en présentiel à Vannes.
 * 2024 : édition en présentiel à Argelès-sur-Mer (Pyrénées Orientales) du 17 au 21 juin [EJCP24](./ejcp2024)
 * 2023 : édition en présentiel à Valence (Drôme) début juillet 2023. [EJCP23](./ejcp2023)
 * 2022 : édition distancielle, début juillet 2022. [EJCP22](./ejcp2022)
